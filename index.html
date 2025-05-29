@@ -1,258 +1,167 @@
 <!DOCTYPE html>
-<html lang="ar">
-
+<html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" href="assets/imgs/inaya_pfp.gif" />
   <title>🌴 ・ خبزة</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
-    xintegrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
-    crossorigin="anonymous" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap"
-    rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="icon" href="assets/imgs/inaya_pfp.gif" />
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <style>
-    /* تمت إضافة خطوط جوجل هنا مباشرة حيث أنها كانت مستوردة في ملف CSS */
-    @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
-    @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
-    @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap");
-
-    *,
-    *::before,
-    *::after {
-      padding: 0;
+    * {
       margin: 0;
-      scroll-behavior: smooth;
+      padding: 0;
       box-sizing: border-box;
+      scroll-behavior: smooth;
     }
 
+    body {
+      background-image: url("https://media1.tenor.com/m/cAxdEo0EsPkAAAAC/pixel-art.gif");
+      background-size: cover;
+      background-attachment: fixed;
+      font-family: 'Tajawal', sans-serif;
+      color: #fff;
+    }
 
-    /* Nav Bar */
+    .container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+    }
+
+    .button {
+      background-color: #444;
+      color: white;
+      border: none;
+      padding: 20px 40px;
+      font-size: 20px;
+      cursor: pointer;
+      border-radius: 10px;
+      transition: background 0.3s ease;
+    }
+
+    .button:hover {
+      background-color: #666;
+    }
 
     header nav {
       display: flex;
-      flex-direction: row;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
       padding: 20px 40px;
-      animation: fadeInDown 0.12s;
     }
 
-    header nav .header_links ul {
-      display: flex;
-      flex-wrap: wrap;
-      flex-direction: row;
-    }
-
-    header nav .header_links ul li,
-    section.main ul li {
-      list-style-type: none;
-    }
-
-    header nav .header_links ul li a {
-      outline: none;
-      text-decoration: none;
-      color: #a6a8b8;
-      padding: 5px 12px;
-      transition: 0.3s all;
-      font-size: 50px; /* حجم الخط كبير جدًا هنا، قد تحتاج إلى تعديله */
-    }
-
-    header nav .header_links ul li a:hover {
-      color: white;
-    }
-
-    header nav .header_logo img {
+    .header_logo img {
       width: 50px;
       height: 50px;
-      border-radius: 100%;
+      border-radius: 50%;
+      border: 4px solid #fff;
       object-fit: cover;
-      border: 5px solid #ffffff93;
-      cursor: pointer;
     }
 
-    /* Responsive nav bar */
-
-    @media only screen and (max-width: 630px) {
-      header nav {
-        display: flex;
-        flex-direction: column;
-      }
-      header nav .header_logo {
-        margin-bottom: 20px;
-      }
+    .header_links ul {
+      list-style: none;
+      display: flex;
+      gap: 15px;
     }
 
-    @media only screen and (max-width: 320px) {
-      header nav .header_links ul {
-        display: flex;
-        justify-content: center;
-        text-align: center;
-        align-items: center;
-        flex-direction: row;
-        flex-wrap: wrap;
-      }
+    .header_links ul li a {
+      color: #a6a8b8;
+      font-size: 24px;
+      transition: 0.3s;
+      text-decoration: none;
     }
 
-    /* Main */
+    .header_links ul li a:hover {
+      color: #fff;
+    }
 
     section.main {
+      min-height: 80vh;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      padding: 40px 20px;
       text-align: center;
-      min-height: 70vh;
-      animation: fadeInUp 0.8s;
     }
 
     section.main img {
       width: 150px;
       height: 150px;
-      border-radius: 100%;
-      object-fit: cover;
-      border: 10px solid #21222b93;
-      cursor: pointer;
+      border-radius: 50%;
+      border: 6px solid #fff;
       margin-bottom: 10px;
     }
 
     section.main span {
-      color: #fffffe;
-      font-size: 31px;
+      font-size: 32px;
       font-weight: bold;
-    }
-
-    section.main ul {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-    }
-
-    section.main ul li a {
-      color: #a6a8b8;
-      display: flex;
-      text-decoration: none;
-      margin: 20px 5px;
-      font-size: 25px;
-      padding: 5px;
-      transition: 0.2s all;
-    }
-
-    section.main ul li a:hover {
-      transition: 0.4s all;
-      color: #fff;
+      margin-bottom: 20px;
     }
 
     .siema {
       max-width: 600px;
       width: 100%;
-      margin: 30px auto ; /* تم تصحيح Auto إلى auto */
-      color: #fff;
+      margin: 30px auto;
     }
-    .siema .quote {
-      width: 99%;
-      height: auto;
-      background-color: rgba(0, 0, 0, 0.582);
-      border-radius: 5px;
-      padding: 22px;
+
+    .quote {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 20px;
+      border-radius: 10px;
+      margin: 10px 0;
     }
+
+    .quote p {
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+
     .carousel-nav {
+      margin-top: 10px;
       text-align: center;
-      margin-top: 14px;
     }
+
     .carousel-nav button {
-      color: white;
       background: none;
       border: none;
-      font-size: 1.5rem;
-      cursor: pointer;
-      margin: 0 7px;
-    }
-
-    @keyframes typewriter {
-      from {
-        width: 0;
-      }
-      to {
-        width: 31em; /* قد تحتاج إلى تعديل هذه القيمة لتناسب النص */
-      }
-    }
-
-    @keyframes blinkTextCursor {
-      from {
-        border-right-color: rgba(255, 255, 255, 0.75);
-      }
-      to {
-        border-right-color: transparent;
-      }
-    }
-
-    @keyframes fadeInUp {
-      from {
-        transform: translate3d(0, 150px, 0);
-        opacity: 0; /* إضافة opacity للبداية */
-      }
-      to {
-        transform: translate3d(0, 0, 0);
-        opacity: 1;
-      }
-    }
-
-    @keyframes fadeInDown {
-      from {
-        transform: translate3d(0, -150px, 0);
-        opacity: 0; /* إضافة opacity للبداية */
-      }
-      to {
-        transform: translate3d(0, 0, 0);
-        opacity: 1;
-      }
-    }
-
-    /* أنماط HTML المضمنة سابقًا */
-    body {
-      background-image: url("https://media1.tenor.com/m/cAxdEo0EsPkAAAAC/pixel-art.gif");
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center;
-      background-attachment: fixed;
-      font-family: "Tajawal", sans-serif;
-    }
-    .container {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 999;
-      background-color: rgba(240, 240, 240, 0.5); /* تم تعديل الشفافية لتكون متناسقة */
-    }
-
-    .button {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 100%; /* قد يكون هذا كبيرًا جدًا، ربما ترغب في تعديله */
-      height: 100%; /* قد يكون هذا كبيرًا جدًا، ربما ترغب في تعديله */
-      background-color: rgba(0, 0, 0, 0.87);
       color: white;
-      border: none;
-      text-align: center;
-      line-height: 50px; /* هذا قد لا يكون كافيًا إذا كان ارتفاع الزر 100% */
-      font-size: 18px;
+      font-size: 1.8rem;
       cursor: pointer;
-      /* إضافة بعض الخصائص لتحسين التفاعل */
+      margin: 0 10px;
+    }
+
+    ul {
       display: flex;
-      align-items: center;
       justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 40px;
+      padding: 0;
+    }
+
+    ul li {
+      list-style: none;
+    }
+
+    ul li a {
+      color: #a6a8b8;
+      font-size: 28px;
+      transition: 0.3s;
+    }
+
+    ul li a:hover {
+      color: #fff;
     }
   </style>
 </head>
@@ -262,206 +171,67 @@
     <button class="button" onclick="playSong()">اضغط هنا</button>
     <audio id="myAudio" src="assets/audio/gl.mp3" style="display: none"></audio>
   </div>
+
   <header>
     <nav>
       <div class="header_logo">
-        </div>
+        <img src="assets/imgs/logo.png" alt="شعار الموقع" />
+      </div>
       <div class="header_links">
-        <ul class="nav_links">
-          </ul>
+        <ul>
+          <li><a href="https://twitch.tv/v5bzh" target="_blank"><i class="fa-brands fa-twitch"></i></a></li>
+          <li><a href="https://discord.gg/rivalmc" target="_blank"><i class="fa-brands fa-discord"></i></a></li>
+          <li><a href="https://instagram.com/not_5bz" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
+          <li><a href="https://ehsan.sa/" target="_blank"><i class="fas fa-heart"></i></a></li>
+          <li><a href="https://github.com/TikTokv5bzh" target="_blank"><i class="fa-brands fa-github"></i></a></li>
+          <li><a href="https://kick.com/v5bzh" target="_blank"><i class="fa-brands fa-kickstarter"></i></a></li>
+        </ul>
       </div>
     </nav>
   </header>
+
   <section class="main">
-    <img src="assets/imgs/logo.png" alt="شعار الموقع" srcset="" />
+    <img src="assets/imgs/logo.png" alt="شعار الموقع">
     <span>خبزة</span>
-    <br>
+
     <div class="siema">
-      <div class="quote">
-        <p>
-           (وَلَسَوْفَ يُعْطِيكَ رَبُّكَ فَتَرْضَى)
-        </p>
-        <br>
-        <br>
-        <strong> <small>سورة الضحى </small> </strong>
-      </div>
-      <div class="quote">
-        <p>
-          إذا حار أمرك في معنيين ولم تدر حيث الخطا و الصواب فخالف هواك فإن الهوى يقود النفوس الى مايعاب
-        </p>
-        <br>
-        <p>  <strong>  <small>  مقولات الامام الشافعي </small></strong>  </p>
-      </div>
-      <div class="quote">
-        <p>
-          تَعَمَّدني بِنُصحِكَ في اِنفِرادي وَجَنِّبني النَصيحَةَ في الجَماعَه فَإِنَّ النُصحَ بَينَ الناسِ نَوعٌ مِنَ التَوبيخِ لا أَرضى اِستِماعَه وَإِن خالَفتَني وَعَصِيتَ قَولي فَلا تَجزَع إِذا لَم تُعطَ طاعَه
-        </p>
-        <br>
-        <p>  <strong>  <small>  مقولات الامام الشافعي </small></strong>  </p>
-      </div>
-      <div class="quote">
-        <p>
-          وَلَرُبَّ نازِلَةٍ يَضيقُ لَها الفَتى ذَرعاً وَعِندَ اللَهِ مِنها المَخرَجُ ضاقَت فَلَمّا اِستَحكَمَت حَلَقاتُها فُرِجَت وَكُنتُ أَظُنُّها لا تُفرَجُ
-        </p>
-        <br>
-        <p>  <strong>  <small>  مقولات الامام الشافعي </small></strong>  </p>
-      </div>
-      <div class="quote">
-        <p>
-          يُخاطِبُني السَفيهُ بِكُلِّ قُبحٍ فَأَكرَهُ أَن أَكونَ لَهُ مُجيبا يَزيدُ سَفاهَةً فَأَزيدُ حِلماً كَعودٍ زادَهُ الإِحراقُ طيبا
-        </p>
-        <br>
-        <p>  <strong>  <small>  مقولات الامام الشافعي </small></strong>  </p>
-      </div>
-      <div class="quote">
-        <p>
-          عن أبي هريرة عن النبي صلى الله عليه وسلم قال : " إن سورة من القرآن ثلاثون آية شفعت لرجل حتى غفر له وهي سورة تبارك الذي بيده الملك "
-        </p>
-        <br>
-       <strong>  <small>  رواه الترمذي | حديث صحيح  </small></strong>
+      <div class="quote"><p>(وَلَسَوْفَ يُعْطِيكَ رَبُّكَ فَتَرْضَى)</p><small>سورة الضحى</small></div>
+      <div class="quote"><p>إذا حار أمرك في معنيين... فخالف هواك فإن الهوى يقود النفوس إلى ما يعاب</p><small>الشافعي</small></div>
+      <div class="quote"><p>تعمَّدني بنصحك في انفرادي... فإن النصح بين الناس توبيخ</p><small>الشافعي</small></div>
+      <div class="quote"><p>ولربّ نازلة يضيق بها الفتى... ضاقت فلما استحكمت حلقاتها فُرجت</p><small>الشافعي</small></div>
+      <div class="quote"><p>يخاطبني السفيه بكل قبح... فأكره أن أكون له مجيبًا</p><small>الشافعي</small></div>
+      <div class="quote"><p>سورة من القرآن ثلاثون آية شفعت لرجل حتى غفر له، وهي "تبارك"</p><small>حديث - الترمذي</small></div>
+      <div class="quote"><p>إذا أحب الرجل أخاه فليخبره</p><small>حديث - أبو داود</small></div>
+      <div class="quote"><p>ولدتَك أمك باكيًا والناس حولك يضحكون سرورًا</p><small>مقولات</small></div>
+      <div class="quote"><p>العهد الذي بيننا وبينهم الصلاة، فمن تركها فقد كفر</p><small>صحيح مسلم</small></div>
+      <div class="quote"><p>(الْيَوْمَ أَكْمَلْتُ لَكُمْ دِينَكُمْ...)</p><small>سورة المائدة</small></div>
+      <div class="quote"><p>(إِنَّ الصَّلاةَ تَنْهَى عَنِ الْفَحْشَاءِ...)</p><small>سورة العنكبوت</small></div>
+      <div class="quote"><p>(وَمَنْ أَعْرَضَ عَن ذِكْرِي...)</p><small>سورة طه</small></div>
     </div>
-    <div class="quote">
-      <p>
-        إذا أحبَّ الرجلُ أخاه فلْيخبره أنه يحبُّه
-      </p>
-      <br>
-      <br>
-    <strong>   <small>    أخرجه أبو داود </small></strong>
-  </div>
 
-  <div class="quote">
-    <p>
-      ولدتكَ أمكَ يا ابن آدمْ باكيا و النَّاس حَولَك يضْحكون سُروراً فاحرِص لنفْسك أن تَكُون إِذَا بكوْا فِي يَوْم مَوتِك ضاحكًا مَسرُورا
-    </p>
-    <br>
-
-  <strong>   <small>مقولات</small></strong>
-</div>
-<div class="quote">
-  <p>
-    الْعَهْدُ الَّذِي بَيْنَنَا وَبَيْنَهُمِ الصَّلَاَةَ، فَمِنْ تَرْكِهَا فَقَدْ كَفَّر
-  </p>
-  <br>
-  <br>
-
-<strong>   <small>صحيح مسلم</small></strong>
-</div>
-
-<div class="quote">
-  <p>
-    ( الْيَوْمَ أَكْمَلْتُ لَكُمْ دِينَكُمْ وَأَتْمَمْتُ عَلَيْكُمْ نِعْمَتِي وَرَضِيتُ لَكُمُ الْإِسْلَامَ دِينًا )
-  </p>
-  <br>
-  <br>
-<strong>   <small> سورة المائدة</small></strong>
-
-</div>
-<div class="quote">
-  <p>
-    ( إِنَّ الصَّلاةَ تَنْهَى عَنِ الْفَحْشَاءِ وَالْمُنْكَرِ )
-   </p>
-  <br>
-  <br>
-<strong>   <small> سورة العنكبوت</small></strong>
-</div>
-<div class="quote">
-  <p>
-    ( وَمَنْ أَعْرَضَ عَن ذِكْرِي فَإِنَّ لَهُ مَعِيشَةً ضَنكًا وَنَحْشُرُهُ يَوْمَ الْقِيَامَةِ أَعْمَىٰ)
-   </p>
-  <br>
-  <br>
-<strong>   <small> سورة طه</small></strong>
-</div>
-
-    </div> <div class="carousel-nav">
+    <div class="carousel-nav">
       <button id="prev"><i class="fas fa-chevron-left"></i></button>
       <button id="next"><i class="fas fa-chevron-right"></i></button>
     </div>
-    <ul>
-      <li>
-        <a target="_blank" href="https://twitch.tv/v5bzh"><i class="fa-brands fa-twitch"></i></a>
-      </li>
-      <li>
-        <a target="_blank" href="https://discord.gg/rivalmc"><i class="fa-brands fa-discord"></i></a>
-      </li>
-      <li>
-        <a target="_blank" href="https://instagram.com/not_5bz/"><i class="fa-brands fa-instagram"></i></a>
-      </li>
-      <li>
-        <a target="_blank" href="https://ehsan.sa/"><i class="fas fa-heart"></i></a>
-      </li>
-      <li>
-        <a target="_blank" href="https://github.com/TikTokv5bzh"><i class="fa-brands fa-github"></i></a>
-      </li>
-      <li>
-        <a target="_blank" href="https://discord.gg/dAtXB6F5T4"><i class="fa-brands fa-discord"></i></a>
-      </li>
-      <li>
-        <a target="_blank" href="https://kick.com/v5bzh"><i class="fa-brands fa-kickstarter"></i></a> </li>
-    </ul>
   </section>
+
   <script src="https://unpkg.com/siema@latest/dist/siema.min.js"></script>
   <script>
     function playSong() {
-      var audio = document.getElementById("myAudio");
-      if (audio) { // التحقق من وجود العنصر الصوتي
-        audio.play().catch(error => console.error("Error playing audio:", error)); // معالجة الأخطاء المحتملة عند التشغيل
-        audio.volume = 0.3;
-        audio.addEventListener("ended", function () {
-          audio.play().catch(error => console.error("Error re-playing audio:", error));
-        });
-        var container = document.querySelector(".container");
-        if (container) { // التحقق من وجود الحاوية
-            container.style.display = "none";
-        }
-      } else {
-          console.error("Audio element not found");
-      }
+      const audio = document.getElementById("myAudio");
+      audio.volume = 0.3;
+      audio.play();
+      audio.addEventListener("ended", () => audio.play());
+      document.querySelector(".container").style.display = "none";
     }
 
-    document.addEventListener("DOMContentLoaded", function () {
-      try {
-        const siemaElement = document.querySelector('.siema');
-        if (siemaElement && siemaElement.children.length > 0) { // التأكد من وجود عناصر داخل siema
-            const mySiema = new Siema({
-                selector: '.siema',
-                duration: 200,
-                easing: 'ease-out',
-                perPage: 1,
-                startIndex: 0,
-                draggable: true,
-                multipleDrag: true,
-                threshold: 20,
-                loop: true, // إضافة خاصية التكرار
-                onInit: () => {},
-                onChange: () => {},
-            });
-            const prevButton = document.getElementById("prev");
-            const nextButton = document.getElementById("next");
-
-            if (prevButton) {
-                prevButton.addEventListener("click", () => mySiema.prev());
-            } else {
-                console.error("Previous button not found");
-            }
-            if (nextButton) {
-                nextButton.addEventListener("click", () => mySiema.next());
-            } else {
-                console.error("Next button not found");
-            }
-        } else {
-            console.error("Siema element not found or has no children. Carousel will not be initialized.");
-            const carouselNav = document.querySelector('.carousel-nav');
-            if(carouselNav) carouselNav.style.display = 'none'; // إخفاء أزرار التحكم إذا لم يتم تهيئة السلايدر
-        }
-      } catch (e) {
-          console.error("Error initializing Siema:", e);
-          const carouselNav = document.querySelector('.carousel-nav');
-          if(carouselNav) carouselNav.style.display = 'none'; // إخفاء أزرار التحكم في حالة الخطأ
-      }
+    document.addEventListener("DOMContentLoaded", () => {
+      const mySiema = new Siema({
+        loop: true
+      });
+      document.getElementById("prev").addEventListener("click", () => mySiema.prev());
+      document.getElementById("next").addEventListener("click", () => mySiema.next());
     });
   </script>
 </body>
-
 </html>
-
