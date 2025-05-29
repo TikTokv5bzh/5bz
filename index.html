@@ -7,18 +7,216 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" href="assets/imgs/inaya_pfp.gif" />
   <title>🌴 ・ خبزة</title>
-  <link rel="stylesheet" href="assets/css/style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
-    integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+    xintegrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
     crossorigin="anonymous" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap"
     rel="stylesheet" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <style>
+    /* تمت إضافة خطوط جوجل هنا مباشرة حيث أنها كانت مستوردة في ملف CSS */
+    @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+    @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+    @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap");
+
+    *,
+    *::before,
+    *::after {
+      padding: 0;
+      margin: 0;
+      scroll-behavior: smooth;
+      box-sizing: border-box;
+    }
+
+
+    /* Nav Bar */
+
+    header nav {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 40px;
+      animation: fadeInDown 0.12s;
+    }
+
+    header nav .header_links ul {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+    }
+
+    header nav .header_links ul li,
+    section.main ul li {
+      list-style-type: none;
+    }
+
+    header nav .header_links ul li a {
+      outline: none;
+      text-decoration: none;
+      color: #a6a8b8;
+      padding: 5px 12px;
+      transition: 0.3s all;
+      font-size: 50px; /* حجم الخط كبير جدًا هنا، قد تحتاج إلى تعديله */
+    }
+
+    header nav .header_links ul li a:hover {
+      color: white;
+    }
+
+    header nav .header_logo img {
+      width: 50px;
+      height: 50px;
+      border-radius: 100%;
+      object-fit: cover;
+      border: 5px solid #ffffff93;
+      cursor: pointer;
+    }
+
+    /* Responsive nav bar */
+
+    @media only screen and (max-width: 630px) {
+      header nav {
+        display: flex;
+        flex-direction: column;
+      }
+      header nav .header_logo {
+        margin-bottom: 20px;
+      }
+    }
+
+    @media only screen and (max-width: 320px) {
+      header nav .header_links ul {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+    }
+
+    /* Main */
+
+    section.main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      min-height: 70vh;
+      animation: fadeInUp 0.8s;
+    }
+
+    section.main img {
+      width: 150px;
+      height: 150px;
+      border-radius: 100%;
+      object-fit: cover;
+      border: 10px solid #21222b93;
+      cursor: pointer;
+      margin-bottom: 10px;
+    }
+
+    section.main span {
+      color: #fffffe;
+      font-size: 31px;
+      font-weight: bold;
+    }
+
+    section.main ul {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    section.main ul li a {
+      color: #a6a8b8;
+      display: flex;
+      text-decoration: none;
+      margin: 20px 5px;
+      font-size: 25px;
+      padding: 5px;
+      transition: 0.2s all;
+    }
+
+    section.main ul li a:hover {
+      transition: 0.4s all;
+      color: #fff;
+    }
+
+    .siema {
+      max-width: 600px;
+      width: 100%;
+      margin: 30px auto ; /* تم تصحيح Auto إلى auto */
+      color: #fff;
+    }
+    .siema .quote {
+      width: 99%;
+      height: auto;
+      background-color: rgba(0, 0, 0, 0.582);
+      border-radius: 5px;
+      padding: 22px;
+    }
+    .carousel-nav {
+      text-align: center;
+      margin-top: 14px;
+    }
+    .carousel-nav button {
+      color: white;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      margin: 0 7px;
+    }
+
+    @keyframes typewriter {
+      from {
+        width: 0;
+      }
+      to {
+        width: 31em; /* قد تحتاج إلى تعديل هذه القيمة لتناسب النص */
+      }
+    }
+
+    @keyframes blinkTextCursor {
+      from {
+        border-right-color: rgba(255, 255, 255, 0.75);
+      }
+      to {
+        border-right-color: transparent;
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        transform: translate3d(0, 150px, 0);
+        opacity: 0; /* إضافة opacity للبداية */
+      }
+      to {
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeInDown {
+      from {
+        transform: translate3d(0, -150px, 0);
+        opacity: 0; /* إضافة opacity للبداية */
+      }
+      to {
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
+      }
+    }
+
+    /* أنماط HTML المضمنة سابقًا */
     body {
       background-image: url("https://media1.tenor.com/m/cAxdEo0EsPkAAAAC/pixel-art.gif");
       background-size: cover;
@@ -34,7 +232,7 @@
       width: 100%;
       height: 100%;
       z-index: 999;
-      background-color: rgba(240, 240, 240, 0.5);
+      background-color: rgba(240, 240, 240, 0.5); /* تم تعديل الشفافية لتكون متناسقة */
     }
 
     .button {
@@ -42,15 +240,19 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 100%;
-      height: 100%;
+      width: 100%; /* قد يكون هذا كبيرًا جدًا، ربما ترغب في تعديله */
+      height: 100%; /* قد يكون هذا كبيرًا جدًا، ربما ترغب في تعديله */
       background-color: rgba(0, 0, 0, 0.87);
       color: white;
       border: none;
       text-align: center;
-      line-height: 50px;
+      line-height: 50px; /* هذا قد لا يكون كافيًا إذا كان ارتفاع الزر 100% */
       font-size: 18px;
       cursor: pointer;
+      /* إضافة بعض الخصائص لتحسين التفاعل */
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
   </style>
 </head>
@@ -62,16 +264,16 @@
   </div>
   <header>
     <nav>
-      <div class="header_logo"></div>
+      <div class="header_logo">
+        </div>
       <div class="header_links">
         <ul class="nav_links">
-          <li class="nav_link"><a href="#"></a></li>
-        </ul>
+          </ul>
       </div>
     </nav>
   </header>
   <section class="main">
-    <img src="assets/imgs/logo.png" alt="" srcset="" />
+    <img src="assets/imgs/logo.png" alt="شعار الموقع" srcset="" />
     <span>خبزة</span>
     <br>
     <div class="siema">
@@ -81,11 +283,9 @@
         </p>
         <br>
         <br>
-        <strong> <small>سورة الضحى </small> </strong>  </p>
-        
+        <strong> <small>سورة الضحى </small> </strong>
       </div>
-      <div class="quote"> 
-        
+      <div class="quote">
         <p>
           إذا حار أمرك في معنيين ولم تدر حيث الخطا و الصواب فخالف هواك فإن الهوى يقود النفوس الى مايعاب
         </p>
@@ -115,10 +315,10 @@
       </div>
       <div class="quote">
         <p>
-          عن أبي هريرة عن النبي صلى الله عليه وسلم قال : " إن سورة من القرآن ثلاثون آية شفعت لرجل حتى غفر له وهي سورة تبارك الذي بيده الملك " 
+          عن أبي هريرة عن النبي صلى الله عليه وسلم قال : " إن سورة من القرآن ثلاثون آية شفعت لرجل حتى غفر له وهي سورة تبارك الذي بيده الملك "
         </p>
         <br>
-       <strong>  <small>  رواه الترمذي | حديث صحيح  </strong> </small>  </p>
+       <strong>  <small>  رواه الترمذي | حديث صحيح  </small></strong>
     </div>
     <div class="quote">
       <p>
@@ -126,7 +326,7 @@
       </p>
       <br>
       <br>
-    <strong>   <small>    أخرجه أبو داود </strong>  </small>  </p>
+    <strong>   <small>    أخرجه أبو داود </small></strong>
   </div>
 
   <div class="quote">
@@ -134,8 +334,8 @@
       ولدتكَ أمكَ يا ابن آدمْ باكيا و النَّاس حَولَك يضْحكون سُروراً فاحرِص لنفْسك أن تَكُون إِذَا بكوْا فِي يَوْم مَوتِك ضاحكًا مَسرُورا
     </p>
     <br>
-    
-  <strong>   <small>مقولات</strong>  </small>  </p>
+
+  <strong>   <small>مقولات</small></strong>
 </div>
 <div class="quote">
   <p>
@@ -143,8 +343,8 @@
   </p>
   <br>
   <br>
-  
-<strong>   <small>صحيح مسلم</strong>  </small>  </p>
+
+<strong>   <small>صحيح مسلم</small></strong>
 </div>
 
 <div class="quote">
@@ -153,28 +353,27 @@
   </p>
   <br>
   <br>
-<strong>   <small> سورة المائدة</strong>  </small>  </p>
+<strong>   <small> سورة المائدة</small></strong>
 
 </div>
 <div class="quote">
   <p>
-    ( إِنَّ الصَّلاةَ تَنْهَى عَنِ الْفَحْشَاءِ وَالْمُنْكَرِ )  
+    ( إِنَّ الصَّلاةَ تَنْهَى عَنِ الْفَحْشَاءِ وَالْمُنْكَرِ )
    </p>
   <br>
   <br>
-<strong>   <small> سورة العنكبوت</strong>  </small>  </p>
+<strong>   <small> سورة العنكبوت</small></strong>
 </div>
 <div class="quote">
   <p>
-    ( وَمَنْ أَعْرَضَ عَن ذِكْرِي فَإِنَّ لَهُ مَعِيشَةً ضَنكًا وَنَحْشُرُهُ يَوْمَ الْقِيَامَةِ أَعْمَىٰ)  
+    ( وَمَنْ أَعْرَضَ عَن ذِكْرِي فَإِنَّ لَهُ مَعِيشَةً ضَنكًا وَنَحْشُرُهُ يَوْمَ الْقِيَامَةِ أَعْمَىٰ)
    </p>
   <br>
   <br>
-<strong>   <small> سورة طه</strong>  </small>  </p>
+<strong>   <small> سورة طه</small></strong>
 </div>
 
-    </div>
-    <div class="carousel-nav">
+    </div> <div class="carousel-nav">
       <button id="prev"><i class="fas fa-chevron-left"></i></button>
       <button id="next"><i class="fas fa-chevron-right"></i></button>
     </div>
@@ -198,33 +397,71 @@
         <a target="_blank" href="https://discord.gg/dAtXB6F5T4"><i class="fa-brands fa-discord"></i></a>
       </li>
       <li>
-        <a target="_blank" href="https://kick.com/v5bzh"><i class="fa-brands fa-kickstarter"></i></a>
-      </li>
+        <a target="_blank" href="https://kick.com/v5bzh"><i class="fa-brands fa-kickstarter"></i></a> </li>
     </ul>
   </section>
   <script src="https://unpkg.com/siema@latest/dist/siema.min.js"></script>
   <script>
     function playSong() {
       var audio = document.getElementById("myAudio");
-      audio.play();
-      audio.volume = 0.3;
-      audio.addEventListener("ended", function () {
-        audio.play();
-      });
-      var container = document.querySelector(".container");
-      container.style.display = "none";
+      if (audio) { // التحقق من وجود العنصر الصوتي
+        audio.play().catch(error => console.error("Error playing audio:", error)); // معالجة الأخطاء المحتملة عند التشغيل
+        audio.volume = 0.3;
+        audio.addEventListener("ended", function () {
+          audio.play().catch(error => console.error("Error re-playing audio:", error));
+        });
+        var container = document.querySelector(".container");
+        if (container) { // التحقق من وجود الحاوية
+            container.style.display = "none";
+        }
+      } else {
+          console.error("Audio element not found");
+      }
     }
 
     document.addEventListener("DOMContentLoaded", function () {
-      const mySiema = new Siema();
-      document
-        .getElementById("prev")
-        .addEventListener("click", () => mySiema.prev());
-      document
-        .getElementById("next")
-        .addEventListener("click", () => mySiema.next());
+      try {
+        const siemaElement = document.querySelector('.siema');
+        if (siemaElement && siemaElement.children.length > 0) { // التأكد من وجود عناصر داخل siema
+            const mySiema = new Siema({
+                selector: '.siema',
+                duration: 200,
+                easing: 'ease-out',
+                perPage: 1,
+                startIndex: 0,
+                draggable: true,
+                multipleDrag: true,
+                threshold: 20,
+                loop: true, // إضافة خاصية التكرار
+                onInit: () => {},
+                onChange: () => {},
+            });
+            const prevButton = document.getElementById("prev");
+            const nextButton = document.getElementById("next");
+
+            if (prevButton) {
+                prevButton.addEventListener("click", () => mySiema.prev());
+            } else {
+                console.error("Previous button not found");
+            }
+            if (nextButton) {
+                nextButton.addEventListener("click", () => mySiema.next());
+            } else {
+                console.error("Next button not found");
+            }
+        } else {
+            console.error("Siema element not found or has no children. Carousel will not be initialized.");
+            const carouselNav = document.querySelector('.carousel-nav');
+            if(carouselNav) carouselNav.style.display = 'none'; // إخفاء أزرار التحكم إذا لم يتم تهيئة السلايدر
+        }
+      } catch (e) {
+          console.error("Error initializing Siema:", e);
+          const carouselNav = document.querySelector('.carousel-nav');
+          if(carouselNav) carouselNav.style.display = 'none'; // إخفاء أزرار التحكم في حالة الخطأ
+      }
     });
   </script>
 </body>
 
 </html>
+
