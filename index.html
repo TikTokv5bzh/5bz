@@ -39,6 +39,9 @@
       font-family: "Tajawal", sans-serif;
       color: #a6a8b8; 
     }
+    body.modal-open {
+        overflow: hidden; /* Prevent background scroll when modal is open */
+    }
 
     /* Nav Bar */
     header nav {
@@ -203,17 +206,17 @@
       to { transform: translate3d(0, 0, 0); opacity: 1; }
     }
 
-    .container {
+    .container { /* Initial click overlay for audio */
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      z-index: 999;
+      z-index: 999; /* Below project modal */
       background-color: rgba(240, 240, 240, 0.5);
     }
 
-    .button {
+    .button { /* Button inside initial click overlay */
       position: absolute;
       top: 50%;
       left: 50%;
@@ -236,7 +239,6 @@
       text-align: center;
       padding: 40px 20px;
       margin-top: 30px;
-      /* border-top: 1px solid #333; */ /* تم إزالة الخط العلوي */
     }
 
     .projects-section h2 {
@@ -272,12 +274,13 @@
       flex-direction: column;
       justify-content: space-around; 
       align-items: center;
-      position: absolute; 
+      position: absolute; /* For carousel animation */
       flex-shrink: 0;
       transition: transform 0.3s ease; 
+      cursor: pointer; /* Indicate it's clickable */
     }
     .project-card:hover {
-        transform: translateY(-5px); 
+        transform: translateY(-5px) scale(1.02); /* Slightly more noticeable hover */
     }
 
     .project-card img {
@@ -286,6 +289,7 @@
       object-fit: cover;
       border-radius: 10px; 
       margin-bottom: 15px;
+      pointer-events: none; /* Prevent image drag from interfering with card click */
     }
 
     .project-card h3 {
@@ -293,6 +297,7 @@
       margin-bottom: 10px;
       font-weight: 500;
       color: #fffffe; 
+      pointer-events: none;
     }
 
     .project-button {
@@ -306,12 +311,14 @@
       display: inline-block; 
       border: none; 
       cursor: pointer;
+      pointer-events: none; /* Button click handled by card; this prevents double action if not needed */
     }
-
-    .project-button:hover {
+    /* If project button needs to be clickable independently, remove pointer-events: none and adjust JS */
+    /* .project-button:hover {
       background-color: #6a43d1; 
       transform: translateY(-2px) scale(1.05); 
-    }
+    } */
+
 
     /* Responsive adjustments for Projects */
     @media (max-width: 992px) { 
@@ -369,14 +376,163 @@
             font-size: 13px;
         }
     }
+
+    /* Modal Styles */
+    .project-modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      display: flex; /* Controlled by JS, initially none */
+      align-items: center;
+      justify-content: center;
+      z-index: 10000; /* Ensure it's on top of everything */
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+      direction: ltr; /* Modal content layout LTR */
+    }
+    .project-modal-overlay.active-overlay {
+        opacity: 1;
+    }
+
+    .project-modal-content {
+      background-color: #2a2d3e;
+      border-radius: 15px;
+      padding: 25px;
+      position: relative;
+      width: 85vw;
+      max-width: 1100px;
+      height: 80vh;
+      max-height: 700px; /* Max height for very tall screens */
+      transform: scale(0.7) translateY(30px);
+      opacity: 0;
+      transition: transform 0.4s cubic-bezier(0.18, 0.89, 0.32, 1.28), opacity 0.3s ease-out;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start; 
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    .project-modal-overlay.active-overlay .project-modal-content.active {
+      transform: scale(1) translateY(0);
+      opacity: 1;
+    }
+
+    .project-modal-close-button {
+      position: absolute;
+      top: 10px; /* Adjusted for better placement */
+      right: 10px; /* Adjusted for better placement */
+      background: transparent;
+      border: none;
+      color: #a6a8b8;
+      font-size: 30px;
+      cursor: pointer;
+      padding: 8px; /* Slightly larger tap target */
+      line-height: 1;
+      transition: color 0.2s ease, transform 0.2s ease;
+      z-index: 10;
+    }
+    .project-modal-close-button:hover {
+      color: #ffffff;
+      transform: rotate(90deg) scale(1.1); /* Added scale on hover */
+    }
+
+    .project-modal-image {
+      width: 150px;
+      height: 150px;
+      border-radius: 12px;
+      object-fit: cover;
+      margin-top: 20px;
+      margin-bottom: 15px;
+      transform: scale(1);
+      transition: width 0.4s ease-in-out 0.1s, height 0.4s ease-in-out 0.1s, 
+                  position 0s linear 0.1s, /* Delay position switch */
+                  top 0.4s ease-in-out 0.1s, right 0.4s ease-in-out 0.1s, 
+                  margin 0.4s ease-in-out 0.1s, transform 0.4s ease-in-out 0.1s;
+      z-index: 5;
+      position: relative; /* Initially relative */
+    }
+
+    .project-modal-title {
+      color: #fffffe;
+      font-size: 24px;
+      font-weight: 500;
+      margin-bottom: 30px;
+      text-align: center;
+      transform: scale(1);
+      transition: font-size 0.4s ease-in-out 0.1s, position 0s linear 0.1s,
+                  top 0.4s ease-in-out 0.1s, right 0.4s ease-in-out 0.1s, left 0.4s ease-in-out 0.1s,
+                  text-align 0.4s ease-in-out 0.1s, width 0.4s ease-in-out 0.1s,
+                  margin 0.4s ease-in-out 0.1s, transform 0.4s ease-in-out 0.1s;
+      z-index: 5;
+      position: relative; /* Initially relative */
+      width: auto; /* Initial width */
+    }
+
+    .project-modal-preview {
+      width: 95%; /* Initial width, centered by flex on parent */
+      height: 0; 
+      background-color: #f0f0f0;
+      border-radius: 8px;
+      opacity: 0;
+      transform: translateY(20px) scale(0.95);
+      transition: width 0.4s ease-in-out 0.3s, height 0.4s ease-in-out 0.3s, 
+                  opacity 0.3s ease-in-out 0.3s, transform 0.3s ease-in-out 0.3s,
+                  margin-top 0.4s ease-in-out 0.3s;
+      overflow: hidden;
+      flex-grow: 0; /* Don't grow initially */
+    }
+
+    .project-modal-preview iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      background-color: #f0f0f0; /* Ensure iframe bg matches if content is transparent */
+    }
+
+    /* --- States when modal content is active and settled --- */
+    .project-modal-content.active .project-modal-image {
+      position: absolute;
+      top: 25px;
+      right: 25px;
+      width: 80px;
+      height: 80px;
+      margin: 0;
+    }
+
+    .project-modal-content.active .project-modal-title {
+      position: absolute;
+      top: 35px; 
+      right: 125px; /* Next to image */
+      left: 25px; /* Give it a left boundary too */
+      width: auto; /* Let it size naturally, or calc(100% - 125px - 25px - 20px); for specific width */
+      max-width: calc(100% - 125px - 25px - 10px); /* Ensure it doesn't overflow */
+      font-size: 18px; 
+      text-align: right;
+      margin: 0;
+    }
+
+    .project-modal-content.active .project-modal-preview {
+      width: calc(100% - 50px); /* Account for modal padding */
+      /* height: calc(100% - 50px - 70px);  Replaced by flex-grow */
+      margin-top: 120px; /* Space for image and title area */
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      flex-grow: 1; /* Allow it to take remaining space */
+    }
+
   </style>
 </head>
 
 <body>
-  <div class="container">
-    <button class="button" onclick="playSong()">اضغط هنا</button>
-    <audio id="myAudio" src="assets/audio/gl.mp3" style="display: none"></audio>
-  </div>
+  <div class="container"> <button class="button" onclick="playAudioInitial()">اضغط هنا</button>
+    </div>
+  <audio id="myAudio" src="assets/audio/gl.mp3" style="display: none"></audio>
+
   <header>
     <nav>
       <div class="header_logo">
@@ -387,6 +543,7 @@
       </div>
     </nav>
   </header>
+
   <section class="main">
     <img src="assets/imgs/logo.png" alt="شعار الموقع" srcset="" />
     <span>خبزة</span>
@@ -407,7 +564,8 @@
         <br>
         <p>  <strong>  <small>  مقولات الامام الشافعي </small></strong>  </p>
       </div>
-      </div> <div class="carousel-nav">
+    </div> 
+    <div class="carousel-nav">
       <button id="prev"><i class="fas fa-chevron-left"></i></button>
       <button id="next"><i class="fas fa-chevron-right"></i></button>
     </div>
@@ -439,53 +597,88 @@
     <h2>مشاريعي</h2>
     <div class="projects-carousel-container">
       <div class="projects-carousel">
-        <div class="project-card">
+        <div class="project-card" data-project-url="https://example.com/project-one">
           <img src="https://placehold.co/180x180/7F5AF0/FFFFFF?text=مشروع+1" alt="صورة مشروع 1">
           <h3>اسم المشروع الأول</h3>
-          <a href="#" class="project-button" target="_blank">زيارة الموقع</a>
+          <a href="https://example.com/project-one" class="project-button" target="_blank">زيارة الموقع</a>
         </div>
-        <div class="project-card">
+        <div class="project-card" data-project-url="https://example.com/project-two">
           <img src="https://placehold.co/180x180/6A43D1/FFFFFF?text=مشروع+2" alt="صورة مشروع 2">
           <h3>اسم المشروع الثاني</h3>
-          <a href="#" class="project-button" target="_blank">زيارة الموقع</a>
+          <a href="https://example.com/project-two" class="project-button" target="_blank">زيارة الموقع</a>
         </div>
-        <div class="project-card">
+        <div class="project-card" data-project-url="https://example.com/project-three">
           <img src="https://placehold.co/180x180/502AA1/FFFFFF?text=مشروع+3" alt="صورة مشروع 3">
           <h3>اسم المشروع الثالث</h3>
-          <a href="#" class="project-button" target="_blank">زيارة الموقع</a>
+          <a href="https://example.com/project-three" class="project-button" target="_blank">زيارة الموقع</a>
         </div>
-        <div class="project-card">
+        <div class="project-card" data-project-url="https://example.com/project-four">
           <img src="https://placehold.co/180x180/3C1F7B/FFFFFF?text=مشروع+4" alt="صورة مشروع 4">
           <h3>اسم المشروع الرابع</h3>
-          <a href="#" class="project-button" target="_blank">زيارة الموقع</a>
+          <a href="https://example.com/project-four" class="project-button" target="_blank">زيارة الموقع</a>
+        </div>
+         <div class="project-card" data-project-url="#"> <img src="https://placehold.co/180x180/2A0F5B/FFFFFF?text=مشروع+5" alt="صورة مشروع 5">
+          <h3>مشروع بدون رابط</h3>
+          <a href="#" class="project-button" target="_blank">التفاصيل</a>
         </div>
       </div>
     </div>
   </section>
+
+  <div id="projectModal" class="project-modal-overlay" style="display: none;">
+    <div class="project-modal-content">
+      <button class="project-modal-close-button" aria-label="Close modal">&times;</button>
+      <img src="" alt="Project Image" class="project-modal-image">
+      <h3 class="project-modal-title"></h3>
+      <div class="project-modal-preview">
+        <iframe src="about:blank" title="Project Preview" sandbox="allow-scripts allow-same-origin allow-popups allow-forms"></iframe>
+        </div>
+    </div>
+  </div>
+
   <script src="https://unpkg.com/siema@latest/dist/siema.min.js"></script>
   <script>
-    // Original script for audio and Siema carousel
-    function playSong() {
-      var audio = document.getElementById("myAudio");
-      if (audio) {
+    // --- Shared Variables ---
+    let projectsCarouselAnimationFrameId;
+    const originalProjectsSpeed = 0.5; // Speed for project carousel
+    let currentProjectsSpeed = originalProjectsSpeed;
+
+    // --- Renamed initial audio play function to avoid conflict ---
+    function playAudioInitial() {
+      const audio = document.getElementById("myAudio");
+      const initialContainer = document.querySelector(".container"); // The initial overlay
+      if (audio && initialContainer) {
         audio.play().catch(error => console.error("Error playing audio:", error));
         audio.volume = 0.3;
+        // Loop the audio
         audio.addEventListener("ended", function () {
-          audio.play().catch(error => console.error("Error re-playing audio:", error));
+          this.currentTime = 0; // Reset time
+          this.play().catch(error => console.error("Error re-playing audio:", error));
         });
-        var container = document.querySelector(".container");
-        if (container) {
-            container.style.display = "none";
-        }
+        initialContainer.style.display = "none"; // Hide the initial overlay
       } else {
-          console.error("Audio element not found");
+          if(!audio) console.error("Audio element #myAudio not found");
+          if(!initialContainer) console.error("Initial audio container .container not found");
       }
     }
+    // Note: The original HTML had onclick="playSong()". I've renamed the function to playAudioInitial()
+    // and will call it if the button exists. The HTML for the button should be:
+    // <button class="button" id="initialAudioButton">اضغط هنا</button>
+    // And then add event listener: document.getElementById('initialAudioButton').addEventListener('click', playAudioInitial);
+    // For now, I'll keep the onclick attribute if the user prefers it.
+    // The provided HTML has onclick="playSong()", so I'll use that name.
+    function playSong() { // Matching the onclick in HTML
+        playAudioInitial();
+    }
 
-    document.addEventListener("DOMContentLoaded", function () {
+
+    // --- DOMContentLoaded: Main script execution ---
+    document.addEventListener('DOMContentLoaded', () => {
+      
+      // 1. Siema Carousel Logic (for quotes)
       try {
         const siemaElement = document.querySelector('.siema');
-        if (siemaElement && siemaElement.children.length > 0) {
+        if (siemaElement && typeof Siema !== 'undefined' && siemaElement.children.length > 0) {
             const mySiema = new Siema({
                 selector: '.siema',
                 duration: 200,
@@ -496,125 +689,191 @@
                 multipleDrag: true,
                 threshold: 20,
                 loop: true,
-                onInit: () => {},
-                onChange: () => {},
             });
             const prevButton = document.getElementById("prev");
             const nextButton = document.getElementById("next");
 
-            if (prevButton) {
-                prevButton.addEventListener("click", () => mySiema.prev());
-            } else {
-                console.error("Previous button not found for Siema");
-            }
-            if (nextButton) {
-                nextButton.addEventListener("click", () => mySiema.next());
-            } else {
-                console.error("Next button not found for Siema");
-            }
+            if (prevButton) prevButton.addEventListener("click", () => mySiema.prev());
+            if (nextButton) nextButton.addEventListener("click", () => mySiema.next());
         } else {
-            console.warn("Siema element not found or has no children. Quotes carousel will not be initialized.");
-            const carouselNav = document.querySelector('.carousel-nav');
-            if(carouselNav) carouselNav.style.display = 'none'; 
+            if (document.querySelector('.carousel-nav')) {
+                document.querySelector('.carousel-nav').style.display = 'none';
+            }
+            // console.warn("Siema element not found or Siema library not loaded. Quotes carousel will not be initialized.");
         }
       } catch (e) {
           console.error("Error initializing Siema:", e);
-          const carouselNav = document.querySelector('.carousel-nav');
-          if(carouselNav) carouselNav.style.display = 'none';
-      }
-    });
-
-    // New script for Projects Carousel
-    document.addEventListener('DOMContentLoaded', () => {
-      const carouselContainer = document.querySelector('.projects-carousel-container');
-      const carousel = document.querySelector('.projects-carousel');
-      const cards = Array.from(carousel.querySelectorAll('.project-card'));
-
-      if (!carousel || !carouselContainer || cards.length === 0) {
-        console.warn("Projects carousel elements not found. Animation will not start.");
-        return;
+          if (document.querySelector('.carousel-nav')) {
+              document.querySelector('.carousel-nav').style.display = 'none';
+          }
       }
 
-      let cardWidth = 0;
-      const gap = 20; 
-      let currentSpeed = 0.5; 
-      let animationFrameId;
+      // 2. Projects Carousel Logic (horizontal scroll animation)
+      const projectsCarousel = document.querySelector('.projects-carousel');
+      const projectsCarouselContainer = document.querySelector('.projects-carousel-container');
+      const allProjectCardsForCarousel = projectsCarousel ? Array.from(projectsCarousel.querySelectorAll('.project-card')) : [];
+      let projectCardWidth = 0;
+      const projectCardGap = 20; // Gap between cards in pixels
 
-      function animateCards() {
-        cards.forEach(card => {
-          let currentLeft = parseFloat(card.style.left);
-          currentLeft -= currentSpeed;
-
-          // عرض التكرار الكامل لمجموعة البطاقات مع الفجوات
-          const repeatingWidth = cards.length * (cardWidth + gap);
+      function animateMovingProjectCards() {
+        if (!projectsCarousel || currentProjectsSpeed === 0) { // If paused or no carousel
+          if(projectsCarousel) projectsCarouselAnimationFrameId = requestAnimationFrame(animateMovingProjectCards); // Keep checking if speed changes
+          return;
+        }
+        allProjectCardsForCarousel.forEach(card => {
+          let currentLeft = parseFloat(card.style.left) || 0;
+          currentLeft -= currentProjectsSpeed;
           
-          // إذا خرجت البطاقة بالكامل من اليسار
-          if (currentLeft + cardWidth < 0) {
-            // انقلها إلى يمين المجموعة بأكملها
-            currentLeft += repeatingWidth;
+          const totalWidthOfAllCardsInRepeatingSet = allProjectCardsForCarousel.length * (projectCardWidth + projectCardGap);
+          
+          if (currentLeft + projectCardWidth < 0) { // If card is completely off-screen to the left
+            currentLeft += totalWidthOfAllCardsInRepeatingSet; // Move it to the end of the line
           }
           card.style.left = currentLeft + 'px';
         });
-        animationFrameId = requestAnimationFrame(animateCards);
+        projectsCarouselAnimationFrameId = requestAnimationFrame(animateMovingProjectCards);
       }
 
-      function initializeProjectsCarousel() {
-        if (cards.length === 0) return;
+      function initializeProjectsCarouselLayout() {
+        if (allProjectCardsForCarousel.length === 0 || !projectsCarousel || !projectsCarouselContainer) return;
 
-        // إيقاف أي حركة سابقة قبل إعادة التهيئة (مهم عند تغيير الحجم)
-        if (animationFrameId) {
-            cancelAnimationFrame(animationFrameId);
+        if (projectsCarouselAnimationFrameId) {
+          cancelAnimationFrame(projectsCarouselAnimationFrameId);
         }
-
-        // حساب عرض البطاقة الفعلي بعد عرضها في الصفحة
-        // هذا أمر بالغ الأهمية لضمان دقة الحسابات
-        cardWidth = cards[0].offsetWidth; 
-
-        // إذا كان عرض البطاقة لا يزال 0 (قد يحدث إذا لم يتم عرض العنصر بالكامل بعد),
-        // نحاول مرة أخرى في الإطار التالي للرسوم المتحركة.
-        if (cardWidth === 0) {
-          console.warn("Project card width is 0. Retrying initialization on the next frame.");
-          animationFrameId = requestAnimationFrame(initializeProjectsCarousel); // إعادة المحاولة
+        
+        projectCardWidth = allProjectCardsForCarousel[0].offsetWidth;
+        if (projectCardWidth === 0) {
+          // console.warn("Project card width is 0. Retrying initialization for projects carousel.");
+          setTimeout(initializeProjectsCarouselLayout, 100); // Retry if not rendered yet
           return;
         }
-        
-        let initialLeft = 0;
-        cards.forEach((card) => {
-          card.style.position = 'absolute'; // التأكد من أن البطاقات مطلقة الموضع
-          card.style.left = initialLeft + 'px';
-          initialLeft += (cardWidth + gap);
+
+        let initialLeftPosition = 0;
+        allProjectCardsForCarousel.forEach((card) => {
+          card.style.position = 'absolute'; // Ensure cards are absolutely positioned for left manipulation
+          card.style.left = initialLeftPosition + 'px';
+          initialLeftPosition += (projectCardWidth + projectCardGap);
         });
         
-        // ضمان أن حاوية العرض الدائري لها ارتفاع كافٍ
-        carousel.style.height = carouselContainer.offsetHeight + 'px';
-
-        animateCards(); // بدء الحركة
+        projectsCarousel.style.height = projectsCarouselContainer.offsetHeight + 'px'; // Match container height
+        currentProjectsSpeed = originalProjectsSpeed; // Ensure it's running
+        animateMovingProjectCards();
       }
-      
-      // استدعاء التهيئة الأولية. إذا لم تكن الصفحة جاهزة بالكامل،
-      // فإن المنطق داخل initializeProjectsCarousel سيعيد المحاولة.
-      initializeProjectsCarousel();
 
+      if (projectsCarousel && projectsCarouselContainer && allProjectCardsForCarousel.length > 0) {
+        initializeProjectsCarouselLayout();
 
-      // إيقاف الحركة مؤقتًا عند مرور الماوس فوق الحاوية
-      carouselContainer.addEventListener('mouseenter', () => {
-        currentSpeed = 0.1; // إبطاء الحركة
-      });
-      carouselContainer.addEventListener('mouseleave', () => {
-        currentSpeed = 0.5; // استئناف السرعة العادية
-      });
+        projectsCarouselContainer.addEventListener('mouseenter', () => {
+          // Slow down only if not paused by modal (i.e., speed is not already 0)
+          if (currentProjectsSpeed !== 0) currentProjectsSpeed = 0.1; 
+        });
+        projectsCarouselContainer.addEventListener('mouseleave', () => {
+          // Resume original speed only if not paused by modal
+          if (currentProjectsSpeed !== 0) currentProjectsSpeed = originalProjectsSpeed;
+        });
 
-      // إعادة تهيئة العرض الدائري عند تغيير حجم النافذة لضمان التجاوب
-      let resizeTimeout;
-      window.addEventListener('resize', () => {
-        clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(() => {
-            if (cards.length > 0) {
-                 initializeProjectsCarousel(); 
+        let resizeTimeoutProjects;
+        window.addEventListener('resize', () => {
+          clearTimeout(resizeTimeoutProjects);
+          resizeTimeoutProjects = setTimeout(() => {
+            if (allProjectCardsForCarousel.length > 0) {
+              initializeProjectsCarouselLayout(); 
             }
-        }, 250); 
+          }, 250);
+        });
+      } else {
+        // console.warn("Projects carousel elements not found. Animation will not start.");
+      }
+
+      // 3. Modal Interaction Logic
+      const modalOverlay = document.getElementById('projectModal');
+      const modalContent = modalOverlay.querySelector('.project-modal-content');
+      const modalImage = modalOverlay.querySelector('.project-modal-image');
+      const modalTitle = modalOverlay.querySelector('.project-modal-title');
+      const modalPreviewFrame = modalOverlay.querySelector('.project-modal-preview iframe');
+      const closeButton = modalOverlay.querySelector('.project-modal-close-button');
+      const clickableProjectCards = document.querySelectorAll('.projects-carousel .project-card');
+
+      clickableProjectCards.forEach(card => {
+        card.addEventListener('click', () => {
+          const imgSrc = card.querySelector('img').src;
+          const titleText = card.querySelector('h3').textContent;
+          // Use data-project-url attribute for the iframe source
+          let projectUrl = card.dataset.projectUrl || card.querySelector('.project-button').href;
+
+          if (!projectUrl || projectUrl === '#' || projectUrl === window.location.href + "#") { // Check if URL is just a hash or empty
+             projectUrl = `https://placehold.co/800x600/f0f0f0/333333?text=${encodeURIComponent(titleText)}%0A(Preview+Not+Available)`;
+          }
+          
+          modalImage.src = imgSrc;
+          modalImage.alt = titleText; 
+          modalTitle.textContent = titleText;
+          modalPreviewFrame.src = projectUrl; // Load project or placeholder
+
+          modalOverlay.style.display = 'flex';
+          document.body.classList.add('modal-open'); // Prevent background scroll
+
+          requestAnimationFrame(() => { // Ensure display:flex is applied
+            modalOverlay.classList.add('active-overlay'); // Fade in overlay
+            modalContent.classList.add('active'); // Trigger modal content animation
+          });
+          
+          // Pause projects carousel
+          if (projectsCarouselAnimationFrameId) {
+              cancelAnimationFrame(projectsCarouselAnimationFrameId);
+              projectsCarouselAnimationFrameId = null; // Clear the ID to indicate it's paused by modal
+          }
+        });
       });
-    });
+
+      function closeModal() {
+        modalContent.classList.remove('active'); // Trigger closing animation for content
+        modalOverlay.classList.remove('active-overlay'); // Trigger fade out for overlay
+        document.body.classList.remove('modal-open'); // Restore background scroll
+
+        // Listen for transition end on the overlay for hiding it
+        const onOverlayTransitionEnd = () => {
+          modalOverlay.style.display = 'none';
+          modalPreviewFrame.src = 'about:blank'; // Clear iframe content
+          modalOverlay.removeEventListener('transitionend', onOverlayTransitionEnd);
+
+          // Resume projects carousel only if it was initialized and paused by modal
+          if (projectsCarousel && allProjectCardsForCarousel.length > 0 && !projectsCarouselAnimationFrameId) {
+              currentProjectsSpeed = originalProjectsSpeed; // Reset speed
+              animateMovingProjectCards(); // Restart animation
+          }
+        };
+        modalOverlay.addEventListener('transitionend', onOverlayTransitionEnd);
+
+        // Fallback if transitionend doesn't fire (e.g., if display was already none or no transition)
+        setTimeout(() => {
+            if (modalOverlay.style.display !== 'none') { // If still visible after timeout
+                modalOverlay.style.display = 'none';
+                modalPreviewFrame.src = 'about:blank';
+                if (projectsCarousel && allProjectCardsForCarousel.length > 0 && !projectsCarouselAnimationFrameId) {
+                    currentProjectsSpeed = originalProjectsSpeed;
+                    animateMovingProjectCards();
+                }
+            }
+        }, 400); // Duration should be slightly longer than CSS opacity transition
+      }
+
+      if(closeButton) closeButton.addEventListener('click', closeModal);
+      if(modalOverlay) {
+          modalOverlay.addEventListener('click', (event) => {
+              // Close only if the click is on the overlay itself, not its children
+              if (event.target === modalOverlay) {
+                  closeModal();
+              }
+          });
+      }
+      window.addEventListener('keydown', (event) => {
+          if (event.key === 'Escape' && modalOverlay.style.display === 'flex') {
+              closeModal();
+          }
+      });
+
+    }); // End of DOMContentLoaded
   </script>
 </body>
 </html>
