@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 
 <head>
   <meta charset="UTF-8" />
@@ -17,7 +17,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <style>
-    /* تمت إضافة خطوط جوجل هنا مباشرة حيث أنها كانت مستوردة في ملف CSS */
     @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
     @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
     @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap");
@@ -31,9 +30,17 @@
       box-sizing: border-box;
     }
 
+    body {
+      background-image: url("https://media1.tenor.com/m/cAxdEo0EsPkAAAAC/pixel-art.gif");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-attachment: fixed;
+      font-family: "Tajawal", sans-serif;
+      color: #a6a8b8; 
+    }
 
     /* Nav Bar */
-
     header nav {
       display: flex;
       flex-direction: row;
@@ -60,7 +67,7 @@
       color: #a6a8b8;
       padding: 5px 12px;
       transition: 0.3s all;
-      font-size: 50px; /* حجم الخط كبير جدًا هنا، قد تحتاج إلى تعديله */
+      font-size: 18px; 
     }
 
     header nav .header_links ul li a:hover {
@@ -77,7 +84,6 @@
     }
 
     /* Responsive nav bar */
-
     @media only screen and (max-width: 630px) {
       header nav {
         display: flex;
@@ -100,15 +106,15 @@
     }
 
     /* Main */
-
     section.main {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
-      min-height: 70vh;
+      min-height: 70vh; 
       animation: fadeInUp 0.8s;
+      padding-bottom: 20px; 
     }
 
     section.main img {
@@ -133,14 +139,15 @@
       align-items: center;
       justify-content: center;
       text-align: center;
+      flex-wrap: wrap; 
     }
 
     section.main ul li a {
       color: #a6a8b8;
       display: flex;
       text-decoration: none;
-      margin: 20px 5px;
-      font-size: 25px;
+      margin: 10px 8px; 
+      font-size: 22px; 
       padding: 5px;
       transition: 0.2s all;
     }
@@ -153,7 +160,7 @@
     .siema {
       max-width: 600px;
       width: 100%;
-      margin: 30px auto ; /* تم تصحيح Auto إلى auto */
+      margin: 30px auto;
       color: #fff;
     }
     .siema .quote {
@@ -177,54 +184,25 @@
     }
 
     @keyframes typewriter {
-      from {
-        width: 0;
-      }
-      to {
-        width: 31em; /* قد تحتاج إلى تعديل هذه القيمة لتناسب النص */
-      }
+      from { width: 0; }
+      to { width: 31em; }
     }
 
     @keyframes blinkTextCursor {
-      from {
-        border-right-color: rgba(255, 255, 255, 0.75);
-      }
-      to {
-        border-right-color: transparent;
-      }
+      from { border-right-color: rgba(255, 255, 255, 0.75); }
+      to { border-right-color: transparent; }
     }
 
     @keyframes fadeInUp {
-      from {
-        transform: translate3d(0, 150px, 0);
-        opacity: 0; /* إضافة opacity للبداية */
-      }
-      to {
-        transform: translate3d(0, 0, 0);
-        opacity: 1;
-      }
+      from { transform: translate3d(0, 150px, 0); opacity: 0; }
+      to { transform: translate3d(0, 0, 0); opacity: 1; }
     }
 
     @keyframes fadeInDown {
-      from {
-        transform: translate3d(0, -150px, 0);
-        opacity: 0; /* إضافة opacity للبداية */
-      }
-      to {
-        transform: translate3d(0, 0, 0);
-        opacity: 1;
-      }
+      from { transform: translate3d(0, -150px, 0); opacity: 0; }
+      to { transform: translate3d(0, 0, 0); opacity: 1; }
     }
 
-    /* أنماط HTML المضمنة سابقًا */
-    body {
-      background-image: url("https://media1.tenor.com/m/cAxdEo0EsPkAAAAC/pixel-art.gif");
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center;
-      background-attachment: fixed;
-      font-family: "Tajawal", sans-serif;
-    }
     .container {
       position: absolute;
       top: 0;
@@ -232,7 +210,7 @@
       width: 100%;
       height: 100%;
       z-index: 999;
-      background-color: rgba(240, 240, 240, 0.5); /* تم تعديل الشفافية لتكون متناسقة */
+      background-color: rgba(240, 240, 240, 0.5);
     }
 
     .button {
@@ -240,19 +218,156 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 100%; /* قد يكون هذا كبيرًا جدًا، ربما ترغب في تعديله */
-      height: 100%; /* قد يكون هذا كبيرًا جدًا، ربما ترغب في تعديله */
+      width: 100%;
+      height: 100%;
       background-color: rgba(0, 0, 0, 0.87);
       color: white;
       border: none;
       text-align: center;
-      line-height: 50px; /* هذا قد لا يكون كافيًا إذا كان ارتفاع الزر 100% */
       font-size: 18px;
       cursor: pointer;
-      /* إضافة بعض الخصائص لتحسين التفاعل */
       display: flex;
       align-items: center;
       justify-content: center;
+    }
+
+    /* Projects Section Styles */
+    .projects-section {
+      text-align: center;
+      padding: 40px 20px;
+      margin-top: 30px;
+      border-top: 1px solid #333; 
+    }
+
+    .projects-section h2 {
+      color: #fffffe;
+      font-size: 28px;
+      margin-bottom: 40px; 
+    }
+
+    .projects-carousel-container {
+      width: 90%;
+      max-width: 1200px; 
+      margin: 0 auto;
+      overflow: hidden;
+      position: relative;
+      height: 400px; 
+    }
+
+    .projects-carousel {
+      position: relative; 
+      width: 100%;     
+      height: 100%;    
+    }
+
+    .project-card {
+      background-color: #222533; 
+      border-radius: 15px;
+      padding: 20px;
+      width: 260px; 
+      height: 350px; 
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+      color: #e0e0e0; 
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around; 
+      align-items: center;
+      position: absolute; 
+      flex-shrink: 0;
+      transition: transform 0.3s ease; 
+    }
+    .project-card:hover {
+        transform: translateY(-5px); 
+    }
+
+    .project-card img {
+      width: 180px; 
+      height: 180px; 
+      object-fit: cover;
+      border-radius: 10px; 
+      margin-bottom: 15px;
+    }
+
+    .project-card h3 {
+      font-size: 18px; 
+      margin-bottom: 10px;
+      font-weight: 500;
+      color: #fffffe; 
+    }
+
+    .project-button {
+      background-color: #7f5af0; 
+      color: #fffffe;
+      padding: 10px 25px; 
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 500;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      display: inline-block; 
+      border: none; 
+      cursor: pointer;
+    }
+
+    .project-button:hover {
+      background-color: #6a43d1; 
+      transform: translateY(-2px) scale(1.05); 
+    }
+
+    /* Responsive adjustments for Projects */
+    @media (max-width: 992px) { 
+        .project-card {
+            width: 230px;
+            height: 330px;
+        }
+        .project-card img {
+            width: 150px;
+            height: 150px;
+        }
+    }
+    
+    @media (max-width: 768px) {
+      .projects-carousel-container {
+        height: 380px; 
+      }
+      .project-card {
+        width: 200px; 
+        height: 310px;
+        padding: 15px;
+      }
+      .project-card img {
+        width: 120px;
+        height: 120px;
+      }
+      .project-card h3 {
+        font-size: 16px;
+      }
+      .project-button {
+        padding: 8px 18px;
+        font-size: 14px;
+      }
+    }
+
+    @media (max-width: 480px) {
+        .projects-carousel-container {
+            height: 360px; 
+            width: 95%; 
+        }
+        .project-card {
+            width: 170px; 
+            height: 290px; 
+            padding: 12px;
+        }
+        .project-card img {
+            width: 100px;
+            height: 100px;
+        }
+        .project-card h3 {
+            font-size: 15px;
+        }
+        .project-button {
+            padding: 7px 15px;
+            font-size: 13px;
+        }
     }
   </style>
 </head>
@@ -292,88 +407,7 @@
         <br>
         <p>  <strong>  <small>  مقولات الامام الشافعي </small></strong>  </p>
       </div>
-      <div class="quote">
-        <p>
-          تَعَمَّدني بِنُصحِكَ في اِنفِرادي وَجَنِّبني النَصيحَةَ في الجَماعَه فَإِنَّ النُصحَ بَينَ الناسِ نَوعٌ مِنَ التَوبيخِ لا أَرضى اِستِماعَه وَإِن خالَفتَني وَعَصِيتَ قَولي فَلا تَجزَع إِذا لَم تُعطَ طاعَه
-        </p>
-        <br>
-        <p>  <strong>  <small>  مقولات الامام الشافعي </small></strong>  </p>
-      </div>
-      <div class="quote">
-        <p>
-          وَلَرُبَّ نازِلَةٍ يَضيقُ لَها الفَتى ذَرعاً وَعِندَ اللَهِ مِنها المَخرَجُ ضاقَت فَلَمّا اِستَحكَمَت حَلَقاتُها فُرِجَت وَكُنتُ أَظُنُّها لا تُفرَجُ
-        </p>
-        <br>
-        <p>  <strong>  <small>  مقولات الامام الشافعي </small></strong>  </p>
-      </div>
-      <div class="quote">
-        <p>
-          يُخاطِبُني السَفيهُ بِكُلِّ قُبحٍ فَأَكرَهُ أَن أَكونَ لَهُ مُجيبا يَزيدُ سَفاهَةً فَأَزيدُ حِلماً كَعودٍ زادَهُ الإِحراقُ طيبا
-        </p>
-        <br>
-        <p>  <strong>  <small>  مقولات الامام الشافعي </small></strong>  </p>
-      </div>
-      <div class="quote">
-        <p>
-          عن أبي هريرة عن النبي صلى الله عليه وسلم قال : " إن سورة من القرآن ثلاثون آية شفعت لرجل حتى غفر له وهي سورة تبارك الذي بيده الملك "
-        </p>
-        <br>
-       <strong>  <small>  رواه الترمذي | حديث صحيح  </small></strong>
-    </div>
-    <div class="quote">
-      <p>
-        إذا أحبَّ الرجلُ أخاه فلْيخبره أنه يحبُّه
-      </p>
-      <br>
-      <br>
-    <strong>   <small>    أخرجه أبو داود </small></strong>
-  </div>
-
-  <div class="quote">
-    <p>
-      ولدتكَ أمكَ يا ابن آدمْ باكيا و النَّاس حَولَك يضْحكون سُروراً فاحرِص لنفْسك أن تَكُون إِذَا بكوْا فِي يَوْم مَوتِك ضاحكًا مَسرُورا
-    </p>
-    <br>
-
-  <strong>   <small>مقولات</small></strong>
-</div>
-<div class="quote">
-  <p>
-    الْعَهْدُ الَّذِي بَيْنَنَا وَبَيْنَهُمِ الصَّلَاَةَ، فَمِنْ تَرْكِهَا فَقَدْ كَفَّر
-  </p>
-  <br>
-  <br>
-
-<strong>   <small>صحيح مسلم</small></strong>
-</div>
-
-<div class="quote">
-  <p>
-    ( الْيَوْمَ أَكْمَلْتُ لَكُمْ دِينَكُمْ وَأَتْمَمْتُ عَلَيْكُمْ نِعْمَتِي وَرَضِيتُ لَكُمُ الْإِسْلَامَ دِينًا )
-  </p>
-  <br>
-  <br>
-<strong>   <small> سورة المائدة</small></strong>
-
-</div>
-<div class="quote">
-  <p>
-    ( إِنَّ الصَّلاةَ تَنْهَى عَنِ الْفَحْشَاءِ وَالْمُنْكَرِ )
-   </p>
-  <br>
-  <br>
-<strong>   <small> سورة العنكبوت</small></strong>
-</div>
-<div class="quote">
-  <p>
-    ( وَمَنْ أَعْرَضَ عَن ذِكْرِي فَإِنَّ لَهُ مَعِيشَةً ضَنكًا وَنَحْشُرُهُ يَوْمَ الْقِيَامَةِ أَعْمَىٰ)
-   </p>
-  <br>
-  <br>
-<strong>   <small> سورة طه</small></strong>
-</div>
-
-    </div> <div class="carousel-nav">
+      </div> <div class="carousel-nav">
       <button id="prev"><i class="fas fa-chevron-left"></i></button>
       <button id="next"><i class="fas fa-chevron-right"></i></button>
     </div>
@@ -400,18 +434,47 @@
         <a target="_blank" href="https://kick.com/v5bzh"><i class="fa-brands fa-kickstarter"></i></a> </li>
     </ul>
   </section>
+
+  <section class="projects-section">
+    <h2>مشاريعي</h2>
+    <div class="projects-carousel-container">
+      <div class="projects-carousel">
+        <div class="project-card">
+          <img src="https://placehold.co/180x180/7F5AF0/FFFFFF?text=مشروع+1" alt="صورة مشروع 1">
+          <h3>اسم المشروع الأول</h3>
+          <a href="#" class="project-button" target="_blank">زيارة الموقع</a>
+        </div>
+        <div class="project-card">
+          <img src="https://placehold.co/180x180/6A43D1/FFFFFF?text=مشروع+2" alt="صورة مشروع 2">
+          <h3>اسم المشروع الثاني</h3>
+          <a href="#" class="project-button" target="_blank">زيارة الموقع</a>
+        </div>
+        <div class="project-card">
+          <img src="https://placehold.co/180x180/502AA1/FFFFFF?text=مشروع+3" alt="صورة مشروع 3">
+          <h3>اسم المشروع الثالث</h3>
+          <a href="#" class="project-button" target="_blank">زيارة الموقع</a>
+        </div>
+        <div class="project-card">
+          <img src="https://placehold.co/180x180/3C1F7B/FFFFFF?text=مشروع+4" alt="صورة مشروع 4">
+          <h3>اسم المشروع الرابع</h3>
+          <a href="#" class="project-button" target="_blank">زيارة الموقع</a>
+        </div>
+      </div>
+    </div>
+  </section>
   <script src="https://unpkg.com/siema@latest/dist/siema.min.js"></script>
   <script>
+    // Original script for audio and Siema carousel
     function playSong() {
       var audio = document.getElementById("myAudio");
-      if (audio) { // التحقق من وجود العنصر الصوتي
-        audio.play().catch(error => console.error("Error playing audio:", error)); // معالجة الأخطاء المحتملة عند التشغيل
+      if (audio) {
+        audio.play().catch(error => console.error("Error playing audio:", error));
         audio.volume = 0.3;
         audio.addEventListener("ended", function () {
           audio.play().catch(error => console.error("Error re-playing audio:", error));
         });
         var container = document.querySelector(".container");
-        if (container) { // التحقق من وجود الحاوية
+        if (container) {
             container.style.display = "none";
         }
       } else {
@@ -422,7 +485,7 @@
     document.addEventListener("DOMContentLoaded", function () {
       try {
         const siemaElement = document.querySelector('.siema');
-        if (siemaElement && siemaElement.children.length > 0) { // التأكد من وجود عناصر داخل siema
+        if (siemaElement && siemaElement.children.length > 0) {
             const mySiema = new Siema({
                 selector: '.siema',
                 duration: 200,
@@ -432,7 +495,7 @@
                 draggable: true,
                 multipleDrag: true,
                 threshold: 20,
-                loop: true, // إضافة خاصية التكرار
+                loop: true,
                 onInit: () => {},
                 onChange: () => {},
             });
@@ -442,26 +505,117 @@
             if (prevButton) {
                 prevButton.addEventListener("click", () => mySiema.prev());
             } else {
-                console.error("Previous button not found");
+                console.error("Previous button not found for Siema");
             }
             if (nextButton) {
                 nextButton.addEventListener("click", () => mySiema.next());
             } else {
-                console.error("Next button not found");
+                console.error("Next button not found for Siema");
             }
         } else {
-            console.error("Siema element not found or has no children. Carousel will not be initialized.");
+            console.warn("Siema element not found or has no children. Quotes carousel will not be initialized.");
             const carouselNav = document.querySelector('.carousel-nav');
-            if(carouselNav) carouselNav.style.display = 'none'; // إخفاء أزرار التحكم إذا لم يتم تهيئة السلايدر
+            if(carouselNav) carouselNav.style.display = 'none'; 
         }
       } catch (e) {
           console.error("Error initializing Siema:", e);
           const carouselNav = document.querySelector('.carousel-nav');
-          if(carouselNav) carouselNav.style.display = 'none'; // إخفاء أزرار التحكم في حالة الخطأ
+          if(carouselNav) carouselNav.style.display = 'none';
       }
+    });
+
+    // New script for Projects Carousel
+    document.addEventListener('DOMContentLoaded', () => {
+      const carouselContainer = document.querySelector('.projects-carousel-container');
+      const carousel = document.querySelector('.projects-carousel');
+      const cards = Array.from(carousel.querySelectorAll('.project-card'));
+
+      if (!carousel || !carouselContainer || cards.length === 0) {
+        console.warn("Projects carousel elements not found. Animation will not start.");
+        return;
+      }
+
+      let cardWidth = 0;
+      const gap = 20; 
+      let currentSpeed = 0.5; 
+      let animationFrameId;
+
+      function animateCards() {
+        cards.forEach(card => {
+          let currentLeft = parseFloat(card.style.left);
+          currentLeft -= currentSpeed;
+
+          // عرض التكرار الكامل لمجموعة البطاقات مع الفجوات
+          const repeatingWidth = cards.length * (cardWidth + gap);
+          
+          // إذا خرجت البطاقة بالكامل من اليسار
+          if (currentLeft + cardWidth < 0) {
+            // انقلها إلى يمين المجموعة بأكملها
+            currentLeft += repeatingWidth;
+          }
+          card.style.left = currentLeft + 'px';
+        });
+        animationFrameId = requestAnimationFrame(animateCards);
+      }
+
+      function initializeProjectsCarousel() {
+        if (cards.length === 0) return;
+
+        // إيقاف أي حركة سابقة قبل إعادة التهيئة (مهم عند تغيير الحجم)
+        if (animationFrameId) {
+            cancelAnimationFrame(animationFrameId);
+        }
+
+        // حساب عرض البطاقة الفعلي بعد عرضها في الصفحة
+        // هذا أمر بالغ الأهمية لضمان دقة الحسابات
+        cardWidth = cards[0].offsetWidth; 
+
+        // إذا كان عرض البطاقة لا يزال 0 (قد يحدث إذا لم يتم عرض العنصر بالكامل بعد),
+        // نحاول مرة أخرى في الإطار التالي للرسوم المتحركة.
+        if (cardWidth === 0) {
+          console.warn("Project card width is 0. Retrying initialization on the next frame.");
+          animationFrameId = requestAnimationFrame(initializeProjectsCarousel); // إعادة المحاولة
+          return;
+        }
+        
+        let initialLeft = 0;
+        cards.forEach((card) => {
+          card.style.position = 'absolute'; // التأكد من أن البطاقات مطلقة الموضع
+          card.style.left = initialLeft + 'px';
+          initialLeft += (cardWidth + gap);
+        });
+        
+        // ضمان أن حاوية العرض الدائري لها ارتفاع كافٍ
+        carousel.style.height = carouselContainer.offsetHeight + 'px';
+
+        animateCards(); // بدء الحركة
+      }
+      
+      // استدعاء التهيئة الأولية. إذا لم تكن الصفحة جاهزة بالكامل،
+      // فإن المنطق داخل initializeProjectsCarousel سيعيد المحاولة.
+      initializeProjectsCarousel();
+
+
+      // إيقاف الحركة مؤقتًا عند مرور الماوس فوق الحاوية
+      carouselContainer.addEventListener('mouseenter', () => {
+        currentSpeed = 0.1; // إبطاء الحركة
+      });
+      carouselContainer.addEventListener('mouseleave', () => {
+        currentSpeed = 0.5; // استئناف السرعة العادية
+      });
+
+      // إعادة تهيئة العرض الدائري عند تغيير حجم النافذة لضمان التجاوب
+      let resizeTimeout;
+      window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            if (cards.length > 0) {
+                 initializeProjectsCarousel(); 
+            }
+        }, 250); 
+      });
     });
   </script>
 </body>
-
 </html>
 
