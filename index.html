@@ -258,34 +258,80 @@
       justify-content: center;
     }
 
-    /* Generic Section Styles (can be reused for projects and servers) */
-    .content-section {
+    /* Projects Section Styles */
+    .projects-master-section { 
       text-align: center;
       padding: 40px 0; 
       margin-top: 30px; 
     }
 
-    .content-section h2 {
+    .projects-master-section h2 {
       color: #fffffe;
       font-size: 28px;
-      margin-bottom: 40px; 
+      margin-bottom: 20px; 
       padding: 0 20px; 
     }
 
-    .custom-carousel-container { /* Renamed from projects-carousel-container */
-      width: 100%; 
-      overflow: hidden;
-      position: relative;
-      height: 420px; 
+    .project-type-buttons {
+      margin-bottom: 30px; 
+      text-align: center;
     }
 
-    .custom-carousel { /* Renamed from projects-carousel */
+    .project-type-button {
+      background-color: #3a3f51; 
+      color: #a6a8b8;
+      border: 2px solid #50566b;
+      padding: 10px 20px;
+      margin: 0 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      font-family: "Tajawal", sans-serif;
+      transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+      font-weight: 500;
+    }
+
+    .project-type-button:hover {
+      background-color: #4f5569;
+      color: #fffffe;
+      border-color: #7f5af0;
+    }
+
+    .project-type-button.active-button {
+      background-color: #7f5af0; 
+      color: #fffffe;
+      border-color: #7f5af0;
+      box-shadow: 0 0 12px rgba(127, 90, 240, 0.7);
+    }
+    
+    /* Unified transition for carousel containers */
+    .custom-carousel-container {
+      width: 100%; 
+      overflow: hidden; /* Keep hidden to manage reveal with max-height */
+      position: relative;
+      height: 420px; 
+      /* Transition properties for opacity, transform (slide), and max-height (expand) */
+      transition: opacity 0.4s ease-out, transform 0.4s ease-out, max-height 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+      opacity: 0; /* Start transparent */
+      transform: translateY(20px); /* Start slightly down */
+      max-height: 0; /* Start collapsed */
+    }
+
+    .custom-carousel-container.active-carousel {
+      opacity: 1; /* Fade in */
+      transform: translateY(0); /* Slide to original position */
+      max-height: 450px; /* Expand to full height (ensure this is >= actual content height) */
+      /* overflow: hidden; /* Keep hidden to ensure smooth max-height transition */
+    }
+
+
+    .custom-carousel { 
       position: relative; 
       width: 100%;     
       height: 100%;    
     }
 
-    .content-card { /* Renamed from project-card */
+    .content-card { 
       background-color: #222533; 
       border-radius: 15px;
       padding: 25px; 
@@ -301,7 +347,12 @@
       flex-shrink: 0; 
       transition: transform 0.3s ease; 
       cursor: pointer; 
+      visibility: hidden; 
     }
+     .custom-carousel-container.active-carousel .content-card {
+        visibility: visible; 
+    }
+
     .content-card:hover {
         transform: translateY(-8px) scale(1.03); 
     }
@@ -315,7 +366,7 @@
       pointer-events: none; 
     }
     
-    .content-card .card-info { /* Renamed from project-info */
+    .content-card .card-info { 
         text-align: center;
         width: 100%; 
     }
@@ -328,7 +379,7 @@
       pointer-events: none;
     }
 
-    .card-button { /* Renamed from project-button */
+    .card-button { 
       background-color: #7f5af0; 
       color: #fffffe;
       padding: 10px 25px; 
@@ -357,9 +408,10 @@
     }
     
     @media (max-width: 768px) {
-      .custom-carousel-container {
-        height: 380px; 
+      .custom-carousel-container.active-carousel { 
+        max-height: 400px; 
       }
+      .custom-carousel-container { height: 380px; }
       .content-card {
         width: 240px; 
         height: 300px;
@@ -379,9 +431,10 @@
     }
 
     @media (max-width: 480px) {
-        .custom-carousel-container {
-            height: 360px; 
+        .custom-carousel-container.active-carousel {
+             max-height: 380px; 
         }
+        .custom-carousel-container { height: 360px; }
         .content-card {
             width: 200px; 
             height: 270px; 
@@ -656,8 +709,13 @@
     </ul>
   </section>
 
-  <section class="content-section">
-    <h2>مشاريع ألعابي</h2>
+  <section class="projects-master-section">
+    <h2>مشاريعي</h2>
+    <div class="project-type-buttons">
+      <button id="show-games-btn" class="project-type-button">ألعابي</button>
+      <button id="show-servers-btn" class="project-type-button">سيرفراتي</button>
+    </div>
+
     <div class="custom-carousel-container" id="games-carousel-container">
       <div class="custom-carousel" id="games-carousel">
         <div class="content-card" data-project-url="https://tiktokv5bzh.github.io/qs/" data-type="game">
@@ -690,10 +748,7 @@
         </div>
       </div>
     </div>
-  </section>
 
-  <section class="content-section">
-    <h2>سيرفراتي</h2>
     <div class="custom-carousel-container" id="servers-carousel-container">
       <div class="custom-carousel" id="servers-carousel">
         <div class="content-card" data-project-url="رابط-سيرفر-ديسكورد-1" data-type="server">
@@ -746,8 +801,7 @@
   <script>
     // --- Shared Variables ---
     const originalCarouselSpeed = 0.5; 
-    const cardGap = 20; // This should match the margin-right on .content-card if that CSS is re-added
-                       // For absolute positioning, this gap is added to 'left' calculations.
+    const cardGap = 20; 
 
     function playSong() {
       const audio = document.getElementById("myAudio");
@@ -770,110 +824,136 @@
      * Initializes and controls a single carousel instance.
      * @param {string} carouselId The ID of the carousel element.
      * @param {string} containerId The ID of the carousel container element.
+     * @returns {object|null} Carousel controller object or null if elements not found.
      */
     function initializeCarousel(carouselId, containerId) {
         const carousel = document.getElementById(carouselId);
         const carouselContainer = document.getElementById(containerId);
-        let allCardsForCarousel = carousel ? Array.from(carousel.querySelectorAll('.content-card')) : [];
+
+        if (!carousel || !carouselContainer) {
+            console.error(`Carousel elements not found for ${carouselId} or ${containerId}`);
+            return null;
+        }
+
+        let allCardsForCarousel = [];
         let cardWidth = 0;
-        let animationFrameId;
+        let animationFrameId = null;
         let currentSpeed = originalCarouselSpeed;
+        let isLayoutDone = false; 
+        let resizeTimeout;
+
+        function setupCarouselLayout() {
+            if (!carouselContainer.classList.contains('active-carousel') || carouselContainer.offsetWidth === 0) {
+                isLayoutDone = false;
+                return false; 
+            }
+
+            allCardsForCarousel = Array.from(carousel.querySelectorAll('.content-card'));
+            if (allCardsForCarousel.length === 0) {
+                isLayoutDone = false;
+                return false; 
+            }
+            
+            // Force reflow to ensure correct offsetWidth if cards were recently made visible
+            // This can sometimes help if offsetWidth is read as 0 immediately after visibility change.
+            allCardsForCarousel.forEach(card => card.offsetHeight); // Reading offsetHeight can trigger reflow
+
+            cardWidth = allCardsForCarousel[0].offsetWidth;
+            if (cardWidth === 0) {
+                isLayoutDone = false;
+                // Retry layout after a short delay if card width is still 0
+                requestAnimationFrame(() => {
+                    if (carouselContainer.classList.contains('active-carousel')) {
+                        start(); 
+                    }
+                });
+                return false;
+            }
+
+            let initialLeftPosition = 0;
+            allCardsForCarousel.forEach((card) => {
+                card.style.position = 'absolute'; 
+                card.style.left = initialLeftPosition + 'px';
+                initialLeftPosition += (cardWidth + cardGap);
+            });
+            
+            carousel.style.height = carouselContainer.offsetHeight + 'px';
+            isLayoutDone = true; 
+            return true; 
+        }
 
         function animateMovingCards() {
-            if (!carousel || currentSpeed === 0 || allCardsForCarousel.length === 0) {
-                if (carousel) animationFrameId = requestAnimationFrame(animateMovingCards);
+            if (!isLayoutDone || currentSpeed === 0 || allCardsForCarousel.length === 0) {
+                animationFrameId = requestAnimationFrame(animateMovingCards);
                 return;
             }
 
             const totalLengthOfOneCycle = allCardsForCarousel.length * (cardWidth + cardGap);
+            if (totalLengthOfOneCycle === 0) { 
+                 animationFrameId = requestAnimationFrame(animateMovingCards);
+                 return;
+            }
 
             allCardsForCarousel.forEach(card => {
                 let currentLeft = parseFloat(card.style.left) || 0;
                 currentLeft -= currentSpeed;
 
-                if (currentLeft + cardWidth <= 0 && totalLengthOfOneCycle > 0) {
-                    currentLeft += totalLengthOfOneCycle;
+                if (currentLeft + cardWidth <= 0) { 
+                    currentLeft += totalLengthOfOneCycle; 
                 }
                 card.style.left = currentLeft + 'px';
             });
             animationFrameId = requestAnimationFrame(animateMovingCards);
         }
 
-        function setupCarouselLayout() {
-            allCardsForCarousel = carousel ? Array.from(carousel.querySelectorAll('.content-card')) : [];
-            if (allCardsForCarousel.length === 0 || !carousel || !carouselContainer) {
-                if (animationFrameId) cancelAnimationFrame(animationFrameId);
+        function start() {
+            if (!carouselContainer.classList.contains('active-carousel')) {
                 return;
             }
 
+            if (!isLayoutDone) {
+                if (!setupCarouselLayout()) {
+                    return; 
+                }
+            }
+            
+            if (isLayoutDone && !animationFrameId) {
+                currentSpeed = originalCarouselSpeed; 
+                animateMovingCards();
+            }
+        }
+        
+        function stop() {
             if (animationFrameId) {
                 cancelAnimationFrame(animationFrameId);
+                animationFrameId = null;
             }
-
-            allCardsForCarousel.forEach(card => card.style.visibility = 'hidden');
-            requestAnimationFrame(() => {
-                allCardsForCarousel.forEach(card => card.style.visibility = '');
-
-                if (allCardsForCarousel.length === 0) return;
-
-                cardWidth = allCardsForCarousel[0].offsetWidth;
-
-                if (cardWidth === 0) {
-                    cardWidth = 320; // Fallback
-                }
-                 if (cardWidth === 0) { 
-                    setTimeout(setupCarouselLayout, 100); 
-                    return;
-                }
-
-
-                let initialLeftPosition = 0;
-                allCardsForCarousel.forEach((card) => {
-                    card.style.position = 'absolute';
-                    card.style.left = initialLeftPosition + 'px';
-                    initialLeftPosition += (cardWidth + cardGap);
-                });
-
-                carousel.style.height = carouselContainer.offsetHeight + 'px';
-                currentSpeed = originalCarouselSpeed;
-                animateMovingCards();
-            });
         }
+        
+        carouselContainer.addEventListener('mouseenter', () => {
+            if (animationFrameId && currentSpeed !== 0) currentSpeed = 0.1; 
+        });
+        carouselContainer.addEventListener('mouseleave', () => {
+            if (animationFrameId && currentSpeed !== 0) currentSpeed = originalCarouselSpeed;
+        });
 
-        if (carousel && carouselContainer) {
-            setupCarouselLayout();
-
-            carouselContainer.addEventListener('mouseenter', () => {
-                if (currentSpeed !== 0 && animationFrameId) currentSpeed = 0.1;
-            });
-            carouselContainer.addEventListener('mouseleave', () => {
-                if (currentSpeed !== 0 && animationFrameId) currentSpeed = originalCarouselSpeed;
-            });
-
-            let resizeTimeout;
-            window.addEventListener('resize', () => {
-                clearTimeout(resizeTimeout);
-                resizeTimeout = setTimeout(() => {
-                    setupCarouselLayout();
-                }, 250);
-            });
-            
-            // Return a reference to the animationFrameId to be managed externally if needed (e.g. by modal)
-            return {
-                pause: () => {
-                    if (animationFrameId) cancelAnimationFrame(animationFrameId);
-                    animationFrameId = null; // Clear ID to indicate paused
-                },
-                resume: () => {
-                    if (!animationFrameId && carousel && allCardsForCarousel.length > 0) {
-                         currentSpeed = originalCarouselSpeed;
-                         animateMovingCards();
-                    }
-                },
-                isPaused: () => animationFrameId === null
-            };
-        }
-        return null; // Return null if carousel or container not found
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                isLayoutDone = false; 
+                if (carouselContainer.classList.contains('active-carousel')) {
+                    stop();       
+                    start();      
+                }
+            }, 250);
+        });
+        
+        return {
+            start, 
+            stop,
+            isAnimating: () => !!animationFrameId,
+            resetLayoutFlag: () => { isLayoutDone = false; } 
+        };
     }
 
 
@@ -912,10 +992,52 @@
           }
       }
 
-      // Initialize carousels
+      const gamesBtn = document.getElementById('show-games-btn');
+      const serversBtn = document.getElementById('show-servers-btn');
+      const gamesCarouselContainer = document.getElementById('games-carousel-container');
+      const serversCarouselContainer = document.getElementById('servers-carousel-container');
+
       const gamesCarouselController = initializeCarousel('games-carousel', 'games-carousel-container');
       const serversCarouselController = initializeCarousel('servers-carousel', 'servers-carousel-container');
 
+      let activeCarouselController = null;
+      let activeCarouselContainer = null;
+
+      function showCarousel(type) {
+          if (activeCarouselController) {
+              activeCarouselController.stop();
+          }
+          if (activeCarouselContainer) {
+              activeCarouselContainer.classList.remove('active-carousel');
+          }
+          
+          gamesBtn.classList.remove('active-button');
+          serversBtn.classList.remove('active-button');
+
+          if (type === 'games') {
+              activeCarouselContainer = gamesCarouselContainer;
+              activeCarouselController = gamesCarouselController;
+              gamesBtn.classList.add('active-button');
+          } else if (type === 'servers') {
+              activeCarouselContainer = serversCarouselContainer;
+              activeCarouselController = serversCarouselController;
+              serversBtn.classList.add('active-button');
+          }
+
+          if (activeCarouselContainer && activeCarouselController) {
+              activeCarouselController.resetLayoutFlag(); 
+              activeCarouselContainer.classList.add('active-carousel');
+              
+              // Delay start slightly to allow CSS transition for visibility to complete
+              // and ensure elements are ready for layout.
+              setTimeout(() => {
+                activeCarouselController.start();
+              }, 50); // Small delay, adjust if needed
+          }
+      }
+
+      if(gamesBtn) gamesBtn.addEventListener('click', () => showCarousel('games'));
+      if(serversBtn) serversBtn.addEventListener('click', () => showCarousel('servers'));
 
       const modalOverlay = document.getElementById('projectModal');
       const modalContent = modalOverlay.querySelector('.project-modal-content');
@@ -926,31 +1048,27 @@
       const goToSiteButton = document.getElementById('modalGoToSiteButton');
       const modalButtonText = goToSiteButton.querySelector('.modal-button-text');
       
-      const clickableContentCards = document.querySelectorAll('.custom-carousel .content-card');
+      const allContentCards = document.querySelectorAll('.custom-carousel .content-card');
 
-      clickableContentCards.forEach(card => {
+      allContentCards.forEach(card => {
         card.addEventListener('click', () => {
           const cardImageElement = card.querySelector('img');
           const originalCardImgSrc = cardImageElement ? cardImageElement.getAttribute('src') : 'https://placehold.co/180x180/222533/FFFFFF?text=Image+Error';
           
           const titleText = card.querySelector('h3').textContent;
           let projectUrl = card.dataset.projectUrl || card.querySelector('.card-button').href;
-          const cardType = card.dataset.type || 'project'; // 'game', 'server', or default 'project'
+          const cardType = card.dataset.type || 'project'; 
 
           let modalProjectUrl = projectUrl;
           let showPreview = true;
 
           if (cardType === 'server') {
             modalButtonText.textContent = 'الانضمام للسيرفر';
-            // For servers, we might not want an iframe preview, or it might be a specific widget if available.
-            // For now, let's assume no iframe preview for servers.
             showPreview = false; 
-            // If you have a specific page to show for servers in the iframe, set modalProjectUrl here.
-            // Otherwise, the iframe will remain blank or show a placeholder.
             if (!projectUrl || projectUrl === '#' || projectUrl.endsWith('#') || projectUrl.startsWith("https://placehold.co")) {
                 modalProjectUrl = `https://placehold.co/800x600/2a2d3e/5865F2?text=${encodeURIComponent(titleText)}%0A(رابط+غير+متوفر)`;
             }
-          } else { // For games or other projects
+          } else { 
             modalButtonText.textContent = 'معاينة المشروع';
             if (!projectUrl || projectUrl === '#' || projectUrl.endsWith('#') || projectUrl.startsWith("https://placehold.co")) { 
                 modalProjectUrl = `https://placehold.co/800x600/2a2d3e/FFFFFF?text=${encodeURIComponent(titleText)}%0A(معاينة+غير+متوفرة)`;
@@ -971,26 +1089,24 @@
 
           const modalPreviewContainer = modalOverlay.querySelector('.project-modal-preview');
           if (showPreview) {
-            modalPreviewContainer.style.display = 'block'; // Or 'flex', depending on its usual display
-            setTimeout(() => {
+            modalPreviewContainer.style.display = 'block'; 
+            setTimeout(() => { 
                 modalPreviewFrame.src = modalProjectUrl; 
             }, 50);
           } else {
-            modalPreviewContainer.style.display = 'none'; // Hide iframe for servers
+            modalPreviewContainer.style.display = 'none'; 
           }
-
 
           modalOverlay.style.display = 'flex';
           document.body.classList.add('modal-open'); 
-
           requestAnimationFrame(() => { 
             modalOverlay.classList.add('active-overlay'); 
             modalContent.classList.add('active'); 
           });
           
-          // Pause carousels
-          if (gamesCarouselController && !gamesCarouselController.isPaused()) gamesCarouselController.pause();
-          if (serversCarouselController && !serversCarouselController.isPaused()) serversCarouselController.pause();
+          if (activeCarouselController && activeCarouselController.isAnimating()) { 
+              activeCarouselController.stop();
+          }
         });
       });
 
@@ -1000,29 +1116,31 @@
         document.body.classList.remove('modal-open'); 
 
         const onOverlayTransitionEnd = (e) => {
-          if (e.target === modalOverlay && e.propertyName === 'opacity') {
+          if (e.target === modalOverlay && e.propertyName === 'opacity') { 
             modalOverlay.style.display = 'none';
             modalPreviewFrame.src = 'about:blank'; 
             goToSiteButton.href = '#'; 
             goToSiteButton.style.display = 'inline-block'; 
             modalOverlay.removeEventListener('transitionend', onOverlayTransitionEnd);
 
-            // Resume carousels
-            if (gamesCarouselController && gamesCarouselController.isPaused()) gamesCarouselController.resume();
-            if (serversCarouselController && serversCarouselController.isPaused()) serversCarouselController.resume();
+            if (activeCarouselController && activeCarouselContainer && activeCarouselContainer.classList.contains('active-carousel')) {
+                activeCarouselController.resetLayoutFlag(); 
+                activeCarouselController.start();
+            }
           }
         };
         modalOverlay.addEventListener('transitionend', onOverlayTransitionEnd);
 
-        // Fallback timeout for safety
         setTimeout(() => { 
             if (modalOverlay.style.display !== 'none') { 
                 modalOverlay.style.display = 'none';
                 modalPreviewFrame.src = 'about:blank';
                 goToSiteButton.href = '#'; 
                 goToSiteButton.style.display = 'inline-block'; 
-                if (gamesCarouselController && gamesCarouselController.isPaused()) gamesCarouselController.resume();
-                if (serversCarouselController && serversCarouselController.isPaused()) serversCarouselController.resume();
+                if (activeCarouselController && activeCarouselContainer && activeCarouselContainer.classList.contains('active-carousel')) {
+                    activeCarouselController.resetLayoutFlag();
+                    activeCarouselController.start();
+                }
             }
         }, 400); 
       }
@@ -1030,7 +1148,7 @@
       if(closeButton) closeButton.addEventListener('click', closeModal);
       if(modalOverlay) {
           modalOverlay.addEventListener('click', (event) => {
-              if (event.target === modalOverlay) {
+              if (event.target === modalOverlay) { 
                   closeModal();
               }
           });
@@ -1041,6 +1159,7 @@
           }
       });
 
+      // showCarousel('games'); // Uncomment to show games by default
     }); 
   </script>
 </body>
