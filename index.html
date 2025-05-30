@@ -258,34 +258,34 @@
       justify-content: center;
     }
 
-    /* Projects Section Styles */
-    .projects-section {
+    /* Generic Section Styles (can be reused for projects and servers) */
+    .content-section {
       text-align: center;
       padding: 40px 0; 
       margin-top: 30px; 
     }
 
-    .projects-section h2 {
+    .content-section h2 {
       color: #fffffe;
       font-size: 28px;
       margin-bottom: 40px; 
       padding: 0 20px; 
     }
 
-    .projects-carousel-container {
+    .custom-carousel-container { /* Renamed from projects-carousel-container */
       width: 100%; 
       overflow: hidden;
       position: relative;
       height: 420px; 
     }
 
-    .projects-carousel {
+    .custom-carousel { /* Renamed from projects-carousel */
       position: relative; 
       width: 100%;     
       height: 100%;    
     }
 
-    .project-card {
+    .content-card { /* Renamed from project-card */
       background-color: #222533; 
       border-radius: 15px;
       padding: 25px; 
@@ -302,11 +302,11 @@
       transition: transform 0.3s ease; 
       cursor: pointer; 
     }
-    .project-card:hover {
+    .content-card:hover {
         transform: translateY(-8px) scale(1.03); 
     }
 
-    .project-card img {
+    .content-card img {
       width: 220px;  
       height: 220px; 
       object-fit: cover;
@@ -315,12 +315,12 @@
       pointer-events: none; 
     }
     
-    .project-card .project-info { 
+    .content-card .card-info { /* Renamed from project-info */
         text-align: center;
         width: 100%; 
     }
 
-    .project-card h3 {
+    .content-card h3 {
       font-size: 20px; 
       margin-bottom: 12px; 
       font-weight: 500;
@@ -328,7 +328,7 @@
       pointer-events: none;
     }
 
-    .project-button {
+    .card-button { /* Renamed from project-button */
       background-color: #7f5af0; 
       color: #fffffe;
       padding: 10px 25px; 
@@ -344,57 +344,57 @@
     }
 
 
-    /* Responsive adjustments for Projects */
+    /* Responsive adjustments for Content Cards */
     @media (max-width: 992px) { 
-        .project-card {
+        .content-card {
             width: 280px; 
             height: 340px;
         }
-        .project-card img {
+        .content-card img {
             width: 190px; 
             height: 190px;
         }
     }
     
     @media (max-width: 768px) {
-      .projects-carousel-container {
+      .custom-carousel-container {
         height: 380px; 
       }
-      .project-card {
+      .content-card {
         width: 240px; 
         height: 300px;
         padding: 20px;
       }
-      .project-card img {
+      .content-card img {
         width: 160px; 
         height: 160px;
       }
-      .project-card h3 {
+      .content-card h3 {
         font-size: 18px;
       }
-      .project-button {
+      .card-button {
         padding: 8px 20px;
         font-size: 14px; 
       }
     }
 
     @media (max-width: 480px) {
-        .projects-carousel-container {
+        .custom-carousel-container {
             height: 360px; 
         }
-        .project-card {
+        .content-card {
             width: 200px; 
             height: 270px; 
             padding: 15px;
         }
-        .project-card img {
+        .content-card img {
             width: 130px; 
             height: 130px;
         }
-        .project-card h3 {
+        .content-card h3 {
             font-size: 16px;
         }
-        .project-button {
+        .card-button {
             padding: 7px 18px;
             font-size: 13px; 
         }
@@ -656,36 +656,72 @@
     </ul>
   </section>
 
-  <section class="projects-section">
-    <h2>مشاريعي</h2>
-    <div class="projects-carousel-container">
-      <div class="projects-carousel">
-        <div class="project-card" data-project-url="https://tiktokv5bzh.github.io/qs/">
+  <section class="content-section">
+    <h2>مشاريع ألعابي</h2>
+    <div class="custom-carousel-container" id="games-carousel-container">
+      <div class="custom-carousel" id="games-carousel">
+        <div class="content-card" data-project-url="https://tiktokv5bzh.github.io/qs/" data-type="game">
           <img src="assets/imgs/لعبة-حروف.png" alt="صورة مشروع لعبة حروف" onerror="this.onerror=null;this.src='https://placehold.co/220x220/222533/FFFFFF?text=لعبة+حروف';">
-          <div class="project-info">
+          <div class="card-info">
             <h3>لعبة حروف</h3>
-            <a href="https://tiktokv5bzh.github.io/qs/" class="project-button" target="_blank">معاينة المشروع</a>
+            <a href="https://tiktokv5bzh.github.io/qs/" class="card-button" target="_blank">معاينة المشروع</a>
           </div>
         </div>
-        <div class="project-card" data-project-url="https://tiktokv5bzh.github.io/wordle/">
+        <div class="content-card" data-project-url="https://tiktokv5bzh.github.io/wordle/" data-type="game">
           <img src="assets/imgs/wordle.jpg" alt="صورة مشروع لعبة ابحث على الكلمة (wordle)" onerror="this.onerror=null;this.src='https://placehold.co/220x220/222533/FFFFFF?text=Wordle';">
-          <div class="project-info">
+          <div class="card-info">
             <h3>لعبة ابحث على الكلمة (wordle)</h3>
-            <a href="https://tiktokv5bzh.github.io/wordle/" class="project-button" target="_blank">معاينة المشروع</a>
+            <a href="https://tiktokv5bzh.github.io/wordle/" class="card-button" target="_blank">معاينة المشروع</a>
           </div>
         </div>
-        <div class="project-card" data-project-url="https://example.com/project-three"> 
+        <div class="content-card" data-project-url="https://example.com/project-three" data-type="game"> 
           <img src="assets/imgs/برا-السالفة.png" alt="صورة مشروع لعبة من برا السالفة" onerror="this.onerror=null;this.src='https://placehold.co/220x220/222533/FFFFFF?text=من+برا+السالفة';">
-          <div class="project-info">
+          <div class="card-info">
             <h3>لعبة من برا السالفة</h3>
-            <a href="https://example.com/project-three" class="project-button" target="_blank">معاينة المشروع</a>
+            <a href="https://example.com/project-three" class="card-button" target="_blank">معاينة المشروع</a>
           </div>
         </div>
-        <div class="project-card" data-project-url="https://example.com/project-four"> 
+        <div class="content-card" data-project-url="https://example.com/project-four" data-type="game"> 
           <img src="assets/imgs/المشروع-الرابع.png" alt="صورة المشروع الرابع" onerror="this.onerror=null;this.src='https://placehold.co/220x220/222533/FFFFFF?text=المشروع+الرابع';">
-          <div class="project-info">
+          <div class="card-info">
             <h3>المشروع الرابع</h3>
-            <a href="https://example.com/project-four" class="project-button" target="_blank">معاينة المشروع</a>
+            <a href="https://example.com/project-four" class="card-button" target="_blank">معاينة المشروع</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <h2>سيرفراتي</h2>
+    <div class="custom-carousel-container" id="servers-carousel-container">
+      <div class="custom-carousel" id="servers-carousel">
+        <div class="content-card" data-project-url="رابط-سيرفر-ديسكورد-1" data-type="server">
+          <img src="https://placehold.co/220x220/222533/5865F2?text=شعار+السيرفر+1" alt="شعار سيرفر ديسكورد 1" onerror="this.onerror=null;this.src='https://placehold.co/220x220/222533/FFFFFF?text=السيرفر+1';">
+          <div class="card-info">
+            <h3>اسم السيرفر 1</h3>
+            <a href="رابط-سيرفر-ديسكورد-1" class="card-button" target="_blank">الانضمام للسيرفر</a>
+          </div>
+        </div>
+        <div class="content-card" data-project-url="رابط-سيرفر-ديسكورد-2" data-type="server">
+          <img src="https://placehold.co/220x220/222533/5865F2?text=شعار+السيرفر+2" alt="شعار سيرفر ديسكورد 2" onerror="this.onerror=null;this.src='https://placehold.co/220x220/222533/FFFFFF?text=السيرفر+2';">
+          <div class="card-info">
+            <h3>اسم السيرفر 2</h3>
+            <a href="رابط-سيرفر-ديسكورد-2" class="card-button" target="_blank">الانضمام للسيرفر</a>
+          </div>
+        </div>
+        <div class="content-card" data-project-url="رابط-سيرفر-ديسكورد-3" data-type="server">
+          <img src="https://placehold.co/220x220/222533/5865F2?text=شعار+السيرفر+3" alt="شعار سيرفر ديسكورد 3" onerror="this.onerror=null;this.src='https://placehold.co/220x220/222533/FFFFFF?text=السيرفر+3';">
+          <div class="card-info">
+            <h3>اسم السيرفر 3</h3>
+            <a href="رابط-سيرفر-ديسكورد-3" class="card-button" target="_blank">الانضمام للسيرفر</a>
+          </div>
+        </div>
+         <div class="content-card" data-project-url="رابط-سيرفر-ديسكورد-4" data-type="server">
+          <img src="https://placehold.co/220x220/222533/5865F2?text=شعار+السيرفر+4" alt="شعار سيرفر ديسكورد 4" onerror="this.onerror=null;this.src='https://placehold.co/220x220/222533/FFFFFF?text=السيرفر+4';">
+          <div class="card-info">
+            <h3>اسم السيرفر 4</h3>
+            <a href="رابط-سيرفر-ديسكورد-4" class="card-button" target="_blank">الانضمام للسيرفر</a>
           </div>
         </div>
       </div>
@@ -700,16 +736,18 @@
       <div class="project-modal-preview">
         <iframe src="about:blank" title="Project Preview" sandbox="allow-scripts allow-same-origin allow-popups allow-forms"></iframe>
       </div>
-      <a href="#" id="modalGoToSiteButton" class="project-modal-go-to-site-button" target="_blank" rel="noopener noreferrer">الانتقال إلى الموقع <i class="fas fa-external-link-alt"></i></a>
+      <a href="#" id="modalGoToSiteButton" class="project-modal-go-to-site-button" target="_blank" rel="noopener noreferrer">
+        <span class="modal-button-text">الانتقال إلى الموقع</span> <i class="fas fa-external-link-alt"></i>
+      </a>
     </div>
   </div>
 
   <script src="https://unpkg.com/siema@latest/dist/siema.min.js"></script>
   <script>
     // --- Shared Variables ---
-    let projectsCarouselAnimationFrameId;
-    const originalProjectsSpeed = 0.5; 
-    let currentProjectsSpeed = originalProjectsSpeed;
+    const originalCarouselSpeed = 0.5; 
+    const cardGap = 20; // This should match the margin-right on .content-card if that CSS is re-added
+                       // For absolute positioning, this gap is added to 'left' calculations.
 
     function playSong() {
       const audio = document.getElementById("myAudio");
@@ -727,6 +765,117 @@
           if(!initialContainer) console.error("Initial audio container .container not found");
       }
     }
+    
+    /**
+     * Initializes and controls a single carousel instance.
+     * @param {string} carouselId The ID of the carousel element.
+     * @param {string} containerId The ID of the carousel container element.
+     */
+    function initializeCarousel(carouselId, containerId) {
+        const carousel = document.getElementById(carouselId);
+        const carouselContainer = document.getElementById(containerId);
+        let allCardsForCarousel = carousel ? Array.from(carousel.querySelectorAll('.content-card')) : [];
+        let cardWidth = 0;
+        let animationFrameId;
+        let currentSpeed = originalCarouselSpeed;
+
+        function animateMovingCards() {
+            if (!carousel || currentSpeed === 0 || allCardsForCarousel.length === 0) {
+                if (carousel) animationFrameId = requestAnimationFrame(animateMovingCards);
+                return;
+            }
+
+            const totalLengthOfOneCycle = allCardsForCarousel.length * (cardWidth + cardGap);
+
+            allCardsForCarousel.forEach(card => {
+                let currentLeft = parseFloat(card.style.left) || 0;
+                currentLeft -= currentSpeed;
+
+                if (currentLeft + cardWidth <= 0 && totalLengthOfOneCycle > 0) {
+                    currentLeft += totalLengthOfOneCycle;
+                }
+                card.style.left = currentLeft + 'px';
+            });
+            animationFrameId = requestAnimationFrame(animateMovingCards);
+        }
+
+        function setupCarouselLayout() {
+            allCardsForCarousel = carousel ? Array.from(carousel.querySelectorAll('.content-card')) : [];
+            if (allCardsForCarousel.length === 0 || !carousel || !carouselContainer) {
+                if (animationFrameId) cancelAnimationFrame(animationFrameId);
+                return;
+            }
+
+            if (animationFrameId) {
+                cancelAnimationFrame(animationFrameId);
+            }
+
+            allCardsForCarousel.forEach(card => card.style.visibility = 'hidden');
+            requestAnimationFrame(() => {
+                allCardsForCarousel.forEach(card => card.style.visibility = '');
+
+                if (allCardsForCarousel.length === 0) return;
+
+                cardWidth = allCardsForCarousel[0].offsetWidth;
+
+                if (cardWidth === 0) {
+                    cardWidth = 320; // Fallback
+                }
+                 if (cardWidth === 0) { 
+                    setTimeout(setupCarouselLayout, 100); 
+                    return;
+                }
+
+
+                let initialLeftPosition = 0;
+                allCardsForCarousel.forEach((card) => {
+                    card.style.position = 'absolute';
+                    card.style.left = initialLeftPosition + 'px';
+                    initialLeftPosition += (cardWidth + cardGap);
+                });
+
+                carousel.style.height = carouselContainer.offsetHeight + 'px';
+                currentSpeed = originalCarouselSpeed;
+                animateMovingCards();
+            });
+        }
+
+        if (carousel && carouselContainer) {
+            setupCarouselLayout();
+
+            carouselContainer.addEventListener('mouseenter', () => {
+                if (currentSpeed !== 0 && animationFrameId) currentSpeed = 0.1;
+            });
+            carouselContainer.addEventListener('mouseleave', () => {
+                if (currentSpeed !== 0 && animationFrameId) currentSpeed = originalCarouselSpeed;
+            });
+
+            let resizeTimeout;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(() => {
+                    setupCarouselLayout();
+                }, 250);
+            });
+            
+            // Return a reference to the animationFrameId to be managed externally if needed (e.g. by modal)
+            return {
+                pause: () => {
+                    if (animationFrameId) cancelAnimationFrame(animationFrameId);
+                    animationFrameId = null; // Clear ID to indicate paused
+                },
+                resume: () => {
+                    if (!animationFrameId && carousel && allCardsForCarousel.length > 0) {
+                         currentSpeed = originalCarouselSpeed;
+                         animateMovingCards();
+                    }
+                },
+                isPaused: () => animationFrameId === null
+            };
+        }
+        return null; // Return null if carousel or container not found
+    }
+
 
     document.addEventListener('DOMContentLoaded', () => {
       
@@ -750,107 +899,22 @@
             if (prevButton) prevButton.addEventListener("click", () => mySiema.prev());
             if (nextButton) nextButton.addEventListener("click", () => mySiema.next());
         } else {
-            if (document.querySelector('.carousel-nav')) {
-                document.querySelector('.carousel-nav').style.display = 'none';
+            const carouselNav = document.querySelector('.carousel-nav');
+            if (carouselNav) {
+                carouselNav.style.display = 'none';
             }
         }
       } catch (e) {
           console.error("Error initializing Siema:", e);
-          if (document.querySelector('.carousel-nav')) {
-              document.querySelector('.carousel-nav').style.display = 'none';
+          const carouselNav = document.querySelector('.carousel-nav');
+          if (carouselNav) {
+              carouselNav.style.display = 'none';
           }
       }
 
-      const projectsCarousel = document.querySelector('.projects-carousel');
-      const projectsCarouselContainer = document.querySelector('.projects-carousel-container');
-      let allProjectCardsForCarousel = projectsCarousel ? Array.from(projectsCarousel.querySelectorAll('.project-card')) : [];
-      let projectCardWidth = 0;
-      const projectCardGap = 20; // This should match the margin-right on .project-card if that CSS is re-added
-                                  // For absolute positioning, this gap is added to 'left' calculations.
-
-      function animateMovingProjectCards() {
-        if (!projectsCarousel || currentProjectsSpeed === 0 || allProjectCardsForCarousel.length === 0) { 
-          if(projectsCarousel) projectsCarouselAnimationFrameId = requestAnimationFrame(animateMovingProjectCards); 
-          return;
-        }
-        
-        const totalLengthOfOneCycle = allProjectCardsForCarousel.length * (projectCardWidth + projectCardGap);
-
-        allProjectCardsForCarousel.forEach(card => {
-          let currentLeft = parseFloat(card.style.left) || 0;
-          currentLeft -= currentProjectsSpeed;
-          
-          // Condition for repositioning: when the card is completely off-screen to the left
-          if (currentLeft + projectCardWidth <= 0 && totalLengthOfOneCycle > 0) { 
-            // Move it to the end of the line by adding the total length of all cards in one cycle
-            currentLeft += totalLengthOfOneCycle; 
-          }
-          card.style.left = currentLeft + 'px';
-        });
-        projectsCarouselAnimationFrameId = requestAnimationFrame(animateMovingProjectCards);
-      }
-
-      function initializeProjectsCarouselLayout() {
-        allProjectCardsForCarousel = projectsCarousel ? Array.from(projectsCarousel.querySelectorAll('.project-card')) : [];
-        if (allProjectCardsForCarousel.length === 0 || !projectsCarousel || !projectsCarouselContainer) {
-            if(projectsCarouselAnimationFrameId) cancelAnimationFrame(projectsCarouselAnimationFrameId);
-            return;
-        }
-
-        if (projectsCarouselAnimationFrameId) {
-          cancelAnimationFrame(projectsCarouselAnimationFrameId);
-        }
-        
-        // Ensure cards are visible to get correct offsetWidth
-        allProjectCardsForCarousel.forEach(card => card.style.visibility = 'hidden'); 
-        requestAnimationFrame(() => { 
-            allProjectCardsForCarousel.forEach(card => card.style.visibility = ''); 
-            
-            if (allProjectCardsForCarousel.length === 0) return;
-            
-            projectCardWidth = allProjectCardsForCarousel[0].offsetWidth;
-
-            if (projectCardWidth === 0) { // Fallback if offsetWidth is not available immediately
-              projectCardWidth = 320; // Use the CSS defined width as a fallback
-            }
-            if (projectCardWidth === 0) { // If still zero, retry
-                setTimeout(initializeProjectsCarouselLayout, 100); 
-                return;
-            }
-
-
-            let initialLeftPosition = 0;
-            allProjectCardsForCarousel.forEach((card) => {
-              card.style.position = 'absolute'; // Ensure absolute positioning
-              card.style.left = initialLeftPosition + 'px';
-              initialLeftPosition += (projectCardWidth + projectCardGap);
-            });
-            
-            projectsCarousel.style.height = projectsCarouselContainer.offsetHeight + 'px'; 
-            currentProjectsSpeed = originalProjectsSpeed; 
-            animateMovingProjectCards();
-        });
-      }
-      
-      if (projectsCarousel && projectsCarouselContainer) { 
-        initializeProjectsCarouselLayout(); 
-
-        projectsCarouselContainer.addEventListener('mouseenter', () => {
-          if (currentProjectsSpeed !== 0 && projectsCarouselAnimationFrameId) currentProjectsSpeed = 0.1; 
-        });
-        projectsCarouselContainer.addEventListener('mouseleave', () => {
-          if (currentProjectsSpeed !== 0 && projectsCarouselAnimationFrameId) currentProjectsSpeed = originalProjectsSpeed;
-        });
-
-        let resizeTimeoutProjects;
-        window.addEventListener('resize', () => {
-          clearTimeout(resizeTimeoutProjects);
-          resizeTimeoutProjects = setTimeout(() => {
-            // Re-initialize layout on resize to adjust card positions and container dimensions
-            initializeProjectsCarouselLayout(); 
-          }, 250);
-        });
-      }
+      // Initialize carousels
+      const gamesCarouselController = initializeCarousel('games-carousel', 'games-carousel-container');
+      const serversCarouselController = initializeCarousel('servers-carousel', 'servers-carousel-container');
 
 
       const modalOverlay = document.getElementById('projectModal');
@@ -859,22 +923,38 @@
       const modalTitle = modalOverlay.querySelector('.project-modal-title');
       const modalPreviewFrame = modalOverlay.querySelector('.project-modal-preview iframe');
       const closeButton = modalOverlay.querySelector('.project-modal-close-button');
-      const goToSiteButton = document.getElementById('modalGoToSiteButton'); 
+      const goToSiteButton = document.getElementById('modalGoToSiteButton');
+      const modalButtonText = goToSiteButton.querySelector('.modal-button-text');
       
-      // Re-query clickable cards as they are static in this version
-      const clickableProjectCards = document.querySelectorAll('.projects-carousel .project-card');
+      const clickableContentCards = document.querySelectorAll('.custom-carousel .content-card');
 
-      clickableProjectCards.forEach(card => {
+      clickableContentCards.forEach(card => {
         card.addEventListener('click', () => {
           const cardImageElement = card.querySelector('img');
           const originalCardImgSrc = cardImageElement ? cardImageElement.getAttribute('src') : 'https://placehold.co/180x180/222533/FFFFFF?text=Image+Error';
           
           const titleText = card.querySelector('h3').textContent;
-          let projectUrl = card.dataset.projectUrl || card.querySelector('.project-button').href;
+          let projectUrl = card.dataset.projectUrl || card.querySelector('.card-button').href;
+          const cardType = card.dataset.type || 'project'; // 'game', 'server', or default 'project'
 
           let modalProjectUrl = projectUrl;
-          if (!projectUrl || projectUrl === '#' || projectUrl.endsWith('#') || projectUrl === window.location.href + "#" || projectUrl.startsWith("https://placehold.co")) { 
-             modalProjectUrl = `https://placehold.co/800x600/2a2d3e/FFFFFF?text=${encodeURIComponent(titleText)}%0A(Preview Not Available)`;
+          let showPreview = true;
+
+          if (cardType === 'server') {
+            modalButtonText.textContent = 'الانضمام للسيرفر';
+            // For servers, we might not want an iframe preview, or it might be a specific widget if available.
+            // For now, let's assume no iframe preview for servers.
+            showPreview = false; 
+            // If you have a specific page to show for servers in the iframe, set modalProjectUrl here.
+            // Otherwise, the iframe will remain blank or show a placeholder.
+            if (!projectUrl || projectUrl === '#' || projectUrl.endsWith('#') || projectUrl.startsWith("https://placehold.co")) {
+                modalProjectUrl = `https://placehold.co/800x600/2a2d3e/5865F2?text=${encodeURIComponent(titleText)}%0A(رابط+غير+متوفر)`;
+            }
+          } else { // For games or other projects
+            modalButtonText.textContent = 'معاينة المشروع';
+            if (!projectUrl || projectUrl === '#' || projectUrl.endsWith('#') || projectUrl.startsWith("https://placehold.co")) { 
+                modalProjectUrl = `https://placehold.co/800x600/2a2d3e/FFFFFF?text=${encodeURIComponent(titleText)}%0A(معاينة+غير+متوفرة)`;
+            }
           }
           
           modalImage.src = originalCardImgSrc; 
@@ -889,10 +969,16 @@
             goToSiteButton.style.display = 'inline-block';
           }
 
+          const modalPreviewContainer = modalOverlay.querySelector('.project-modal-preview');
+          if (showPreview) {
+            modalPreviewContainer.style.display = 'block'; // Or 'flex', depending on its usual display
+            setTimeout(() => {
+                modalPreviewFrame.src = modalProjectUrl; 
+            }, 50);
+          } else {
+            modalPreviewContainer.style.display = 'none'; // Hide iframe for servers
+          }
 
-          setTimeout(() => {
-            modalPreviewFrame.src = modalProjectUrl; 
-          }, 50);
 
           modalOverlay.style.display = 'flex';
           document.body.classList.add('modal-open'); 
@@ -902,11 +988,9 @@
             modalContent.classList.add('active'); 
           });
           
-          if (projectsCarouselAnimationFrameId) {
-              cancelAnimationFrame(projectsCarouselAnimationFrameId);
-              // Clear the ID to indicate it's paused by modal for the closeModal logic
-              projectsCarouselAnimationFrameId = null; 
-          }
+          // Pause carousels
+          if (gamesCarouselController && !gamesCarouselController.isPaused()) gamesCarouselController.pause();
+          if (serversCarouselController && !serversCarouselController.isPaused()) serversCarouselController.pause();
         });
       });
 
@@ -923,25 +1007,22 @@
             goToSiteButton.style.display = 'inline-block'; 
             modalOverlay.removeEventListener('transitionend', onOverlayTransitionEnd);
 
-            // Resume carousel animation if it was paused by modal
-            if (projectsCarousel && allProjectCardsForCarousel.length > 0 && !projectsCarouselAnimationFrameId ) { 
-                currentProjectsSpeed = originalProjectsSpeed; 
-                animateMovingProjectCards(); // Restart animation
-            }
+            // Resume carousels
+            if (gamesCarouselController && gamesCarouselController.isPaused()) gamesCarouselController.resume();
+            if (serversCarouselController && serversCarouselController.isPaused()) serversCarouselController.resume();
           }
         };
         modalOverlay.addEventListener('transitionend', onOverlayTransitionEnd);
 
+        // Fallback timeout for safety
         setTimeout(() => { 
             if (modalOverlay.style.display !== 'none') { 
                 modalOverlay.style.display = 'none';
                 modalPreviewFrame.src = 'about:blank';
                 goToSiteButton.href = '#'; 
                 goToSiteButton.style.display = 'inline-block'; 
-                if (projectsCarousel && allProjectCardsForCarousel.length > 0 && !projectsCarouselAnimationFrameId) {
-                    currentProjectsSpeed = originalProjectsSpeed;
-                    animateMovingProjectCards();
-                }
+                if (gamesCarouselController && gamesCarouselController.isPaused()) gamesCarouselController.resume();
+                if (serversCarouselController && serversCarouselController.isPaused()) serversCarouselController.resume();
             }
         }, 400); 
       }
