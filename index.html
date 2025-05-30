@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 
-
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -305,24 +304,22 @@
       box-shadow: 0 0 12px rgba(127, 90, 240, 0.7);
     }
     
-    /* Unified transition for carousel containers */
     .custom-carousel-container {
       width: 100%; 
-      overflow: hidden; /* Keep hidden to manage reveal with max-height */
+      overflow: hidden; 
       position: relative;
       height: 420px; 
-      /* Transition properties for opacity, transform (slide), and max-height (expand) */
       transition: opacity 0.4s ease-out, transform 0.4s ease-out, max-height 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
-      opacity: 0; /* Start transparent */
-      transform: translateY(20px); /* Start slightly down */
-      max-height: 0; /* Start collapsed */
+      opacity: 0; 
+      transform: translateY(20px); 
+      max-height: 0; 
     }
 
     .custom-carousel-container.active-carousel {
-      opacity: 1; /* Fade in */
-      transform: translateY(0); /* Slide to original position */
-      max-height: 450px; /* Expand to full height (ensure this is >= actual content height) */
-      /* overflow: hidden; /* Keep hidden to ensure smooth max-height transition */
+      opacity: 1; 
+      transform: translateY(0); 
+      max-height: 450px; 
+      overflow: hidden; 
     }
 
 
@@ -711,37 +708,37 @@
   </section>
 
   <section class="projects-master-section">
-    <h2>مشاريعي</h2>
+    <h2>ما طورت فيه</h2>
     <div class="project-type-buttons">
       <button id="show-games-btn" class="project-type-button">ألعابي</button>
-      <button id="show-servers-btn" class="project-type-button">سيرفراتي</button>
+      <button id="show-servers-btn" class="project-type-button">سيرفرات</button>
     </div>
 
     <div class="custom-carousel-container" id="games-carousel-container">
       <div class="custom-carousel" id="games-carousel">
         <div class="content-card" data-project-url="https://tiktokv5bzh.github.io/qs/" data-type="game">
-          <img src="assets/imgs/لعبة-حروف.png" alt="صورة مشروع لعبة حروف" onerror="this.onerror=null;this.src='https://placehold.co/220x220/222533/FFFFFF?text=لعبة+حروف';">
+          <img src="assets/imgs/webgame/لعبة-حروف.png" alt="صورة مشروع لعبة حروف" onerror="this.onerror=null;this.src='https://placehold.co/220x220/222533/FFFFFF?text=لعبة+حروف';">
           <div class="card-info">
             <h3>لعبة حروف</h3>
             <a href="https://tiktokv5bzh.github.io/qs/" class="card-button" target="_blank">معاينة المشروع</a>
           </div>
         </div>
         <div class="content-card" data-project-url="https://tiktokv5bzh.github.io/wordle/" data-type="game">
-          <img src="assets/imgs/wordle.jpg" alt="صورة مشروع لعبة ابحث على الكلمة (wordle)" onerror="this.onerror=null;this.src='https://placehold.co/220x220/222533/FFFFFF?text=Wordle';">
+          <img src="assets/imgs/webgame/wordle.jpg" alt="صورة مشروع لعبة ابحث على الكلمة (wordle)" onerror="this.onerror=null;this.src='https://placehold.co/220x220/222533/FFFFFF?text=Wordle';">
           <div class="card-info">
             <h3>لعبة ابحث على الكلمة (wordle)</h3>
             <a href="https://tiktokv5bzh.github.io/wordle/" class="card-button" target="_blank">معاينة المشروع</a>
           </div>
         </div>
         <div class="content-card" data-project-url="https://example.com/project-three" data-type="game"> 
-          <img src="assets/imgs/برا-السالفة.png" alt="صورة مشروع لعبة من برا السالفة" onerror="this.onerror=null;this.src='https://placehold.co/220x220/222533/FFFFFF?text=من+برا+السالفة';">
+          <img src="assets/imgs/webgame/برا-السالفة.png" alt="صورة مشروع لعبة من برا السالفة" onerror="this.onerror=null;this.src='https://placehold.co/220x220/222533/FFFFFF?text=من+برا+السالفة';">
           <div class="card-info">
             <h3>لعبة من برا السالفة</h3>
             <a href="https://example.com/project-three" class="card-button" target="_blank">معاينة المشروع</a>
           </div>
         </div>
         <div class="content-card" data-project-url="https://example.com/project-four" data-type="game"> 
-          <img src="assets/imgs/المشروع-الرابع.png" alt="صورة المشروع الرابع" onerror="this.onerror=null;this.src='https://placehold.co/220x220/222533/FFFFFF?text=المشروع+الرابع';">
+          <img src="assets/imgs/webgame/المشروع-الرابع.png" alt="صورة المشروع الرابع" onerror="this.onerror=null;this.src='https://placehold.co/220x220/222533/FFFFFF?text=المشروع+الرابع';">
           <div class="card-info">
             <h3>المشروع الرابع</h3>
             <a href="https://example.com/project-four" class="card-button" target="_blank">معاينة المشروع</a>
@@ -752,29 +749,29 @@
 
     <div class="custom-carousel-container" id="servers-carousel-container">
       <div class="custom-carousel" id="servers-carousel">
-        <div class="content-card" data-project-url="رابط-سيرفر-ديسكورد-1" data-type="server">
-          <img src="https://placehold.co/220x220/222533/5865F2?text=شعار+السيرفر+1" alt="شعار سيرفر ديسكورد 1" onerror="this.onerror=null;this.src='https://placehold.co/220x220/222533/FFFFFF?text=السيرفر+1';">
+        <div class="content-card" data-project-url="https://discord.gg/rivalmc" data-type="server">
+          <img src="assets/imgs/servers/rivalmc.png" alt="شعار سيرفر RivalMC" onerror="this.onerror=null;this.src='https://placehold.co/220x220/222533/FFFFFF?text=RivalMC';">
           <div class="card-info">
-            <h3>اسم السيرفر 1</h3>
-            <a href="رابط-سيرفر-ديسكورد-1" class="card-button" target="_blank">الانضمام للسيرفر</a>
+            <h3>RivalMC</h3>
+            <a href="https://discord.gg/rivalmc" class="card-button" target="_blank">الانضمام للسيرفر</a>
           </div>
         </div>
-        <div class="content-card" data-project-url="رابط-سيرفر-ديسكورد-2" data-type="server">
-          <img src="https://placehold.co/220x220/222533/5865F2?text=شعار+السيرفر+2" alt="شعار سيرفر ديسكورد 2" onerror="this.onerror=null;this.src='https://placehold.co/220x220/222533/FFFFFF?text=السيرفر+2';">
+        <div class="content-card" data-project-url="https://discord.gg/tTrBhcdn" data-type="server">
+          <img src="assets/imgs/servers/hexels.png" alt="شعار سيرفر Hexels" onerror="this.onerror=null;this.src='https://placehold.co/220x220/222533/FFFFFF?text=Hexels';">
           <div class="card-info">
-            <h3>اسم السيرفر 2</h3>
-            <a href="رابط-سيرفر-ديسكورد-2" class="card-button" target="_blank">الانضمام للسيرفر</a>
+            <h3>Hexels</h3>
+            <a href="https://discord.gg/tTrBhcdn" class="card-button" target="_blank">الانضمام للسيرفر</a>
           </div>
         </div>
-        <div class="content-card" data-project-url="رابط-سيرفر-ديسكورد-3" data-type="server">
-          <img src="https://placehold.co/220x220/222533/5865F2?text=شعار+السيرفر+3" alt="شعار سيرفر ديسكورد 3" onerror="this.onerror=null;this.src='https://placehold.co/220x220/222533/FFFFFF?text=السيرفر+3';">
+        <div class="content-card" data-project-url="رابط-سيرفر-ديسكورد-3" data-type="server"> 
+          <img src="assets/imgs/servers/اسم-السيرفر-3.png" alt="شعار سيرفر ديسكورد 3" onerror="this.onerror=null;this.src='https://placehold.co/220x220/222533/FFFFFF?text=السيرفر+3';">
           <div class="card-info">
             <h3>اسم السيرفر 3</h3>
             <a href="رابط-سيرفر-ديسكورد-3" class="card-button" target="_blank">الانضمام للسيرفر</a>
           </div>
         </div>
-         <div class="content-card" data-project-url="رابط-سيرفر-ديسكورد-4" data-type="server">
-          <img src="https://placehold.co/220x220/222533/5865F2?text=شعار+السيرفر+4" alt="شعار سيرفر ديسكورد 4" onerror="this.onerror=null;this.src='https://placehold.co/220x220/222533/FFFFFF?text=السيرفر+4';">
+         <div class="content-card" data-project-url="رابط-سيرفر-ديسكورد-4" data-type="server"> 
+          <img src="assets/imgs/servers/اسم-السيرفر-4.png" alt="شعار سيرفر ديسكورد 4" onerror="this.onerror=null;this.src='https://placehold.co/220x220/222533/FFFFFF?text=السيرفر+4';">
           <div class="card-info">
             <h3>اسم السيرفر 4</h3>
             <a href="رابط-سيرفر-ديسكورد-4" class="card-button" target="_blank">الانضمام للسيرفر</a>
@@ -855,14 +852,11 @@
                 return false; 
             }
             
-            // Force reflow to ensure correct offsetWidth if cards were recently made visible
-            // This can sometimes help if offsetWidth is read as 0 immediately after visibility change.
-            allCardsForCarousel.forEach(card => card.offsetHeight); // Reading offsetHeight can trigger reflow
+            allCardsForCarousel.forEach(card => card.offsetHeight); 
 
             cardWidth = allCardsForCarousel[0].offsetWidth;
             if (cardWidth === 0) {
                 isLayoutDone = false;
-                // Retry layout after a short delay if card width is still 0
                 requestAnimationFrame(() => {
                     if (carouselContainer.classList.contains('active-carousel')) {
                         start(); 
@@ -1029,11 +1023,9 @@
               activeCarouselController.resetLayoutFlag(); 
               activeCarouselContainer.classList.add('active-carousel');
               
-              // Delay start slightly to allow CSS transition for visibility to complete
-              // and ensure elements are ready for layout.
               setTimeout(() => {
                 activeCarouselController.start();
-              }, 50); // Small delay, adjust if needed
+              }, 50); 
           }
       }
 
