@@ -38,9 +38,10 @@
       background-attachment: fixed;
       font-family: "Tajawal", sans-serif;
       color: #a6a8b8; 
+      overflow-x: hidden; 
     }
     body.modal-open {
-        overflow: hidden; /* Prevent background scroll when modal is open */
+        overflow: hidden; 
     }
 
     /* Nav Bar */
@@ -113,11 +114,11 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: center; 
       text-align: center;
-      min-height: 70vh; 
+      padding-top: 5vh;    
+      padding-bottom: 60px; 
       animation: fadeInUp 0.8s;
-      padding-bottom: 20px; 
     }
 
     section.main img {
@@ -146,19 +147,42 @@
     }
 
     section.main ul li a {
-      color: #a6a8b8;
-      display: flex;
+      display: flex; 
+      align-items: center;
+      justify-content: center;
       text-decoration: none;
-      margin: 10px 8px; 
-      font-size: 22px; 
-      padding: 5px;
-      transition: 0.2s all;
+      margin: 10px 12px; 
+      font-size: 26px;  
+      padding: 10px;    
+      transition: color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+      border-radius: 50%; 
+      width: 50px; 
+      height: 50px; 
+    }
+    
+    section.main ul li a i { 
+        transition: color 0.3s ease;
     }
 
-    section.main ul li a:hover {
-      transition: 0.4s all;
-      color: #fff;
-    }
+    /* Social Icon Colors & LED Glow */
+    section.main ul li a .fa-twitch { color: #9146FF; }
+    section.main ul li a:hover .fa-twitch { color: #fff; box-shadow: 0 0 10px #9146FF, 0 0 15px #9146FF, 0 0 20px #9146FF; background-color: #9146FF;}
+
+    section.main ul li a .fa-discord { color: #5865F2; }
+    section.main ul li a:hover .fa-discord { color: #fff; box-shadow: 0 0 10px #5865F2, 0 0 15px #5865F2, 0 0 20px #5865F2; background-color: #5865F2;}
+    
+    section.main ul li a .fa-instagram { color: #E1306C; } 
+    section.main ul li a:hover .fa-instagram { color: #fff; box-shadow: 0 0 10px #E1306C, 0 0 15px #E1306C, 0 0 20px #E1306C; background-color: #E1306C;}
+
+    section.main ul li a .fa-hand-holding-heart { color: #E74C3C; } 
+    section.main ul li a:hover .fa-hand-holding-heart { color: #fff; box-shadow: 0 0 10px #E74C3C, 0 0 15px #E74C3C, 0 0 20px #E74C3C; background-color: #E74C3C;}
+
+    section.main ul li a .fa-github { color: #ffffff; } 
+    section.main ul li a:hover .fa-github { color: #24292e; box-shadow: 0 0 10px #ffffff, 0 0 15px #ffffff, 0 0 20px #cccccc; background-color: #ffffff;}
+
+    section.main ul li a .fa-kickstarter-k { color: #53FC18; } 
+    section.main ul li a:hover .fa-kickstarter-k { color: #1a1a1a; box-shadow: 0 0 10px #53FC18, 0 0 15px #53FC18, 0 0 20px #53FC18; background-color: #53FC18;}
+    
 
     .siema {
       max-width: 600px;
@@ -206,17 +230,17 @@
       to { transform: translate3d(0, 0, 0); opacity: 1; }
     }
 
-    .container { /* Initial click overlay for audio */
+    .container { 
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      z-index: 999; /* Below project modal */
+      z-index: 999; 
       background-color: rgba(240, 240, 240, 0.5);
     }
 
-    .button { /* Button inside initial click overlay */
+    .button { 
       position: absolute;
       top: 50%;
       left: 50%;
@@ -237,23 +261,22 @@
     /* Projects Section Styles */
     .projects-section {
       text-align: center;
-      padding: 40px 20px;
-      margin-top: 30px;
+      padding: 40px 0; 
+      margin-top: 30px; 
     }
 
     .projects-section h2 {
       color: #fffffe;
       font-size: 28px;
       margin-bottom: 40px; 
+      padding: 0 20px; 
     }
 
     .projects-carousel-container {
-      width: 90%;
-      max-width: 1200px; 
-      margin: 0 auto;
+      width: 100%; 
       overflow: hidden;
       position: relative;
-      height: 400px; 
+      height: 420px; 
     }
 
     .projects-carousel {
@@ -265,36 +288,41 @@
     .project-card {
       background-color: #222533; 
       border-radius: 15px;
-      padding: 20px;
-      width: 260px; 
-      height: 350px; 
-      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+      padding: 25px; 
+      width: 320px;  
+      height: 380px; 
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4); 
       color: #e0e0e0; 
       display: flex;
       flex-direction: column;
-      justify-content: space-around; 
+      justify-content: space-between; 
       align-items: center;
-      position: absolute; /* For carousel animation */
-      flex-shrink: 0;
+      position: absolute; 
+      flex-shrink: 0; 
       transition: transform 0.3s ease; 
-      cursor: pointer; /* Indicate it's clickable */
+      cursor: pointer; 
     }
     .project-card:hover {
-        transform: translateY(-5px) scale(1.02); /* Slightly more noticeable hover */
+        transform: translateY(-8px) scale(1.03); 
     }
 
     .project-card img {
-      width: 180px; 
-      height: 180px; 
+      width: 220px;  
+      height: 220px; 
       object-fit: cover;
       border-radius: 10px; 
-      margin-bottom: 15px;
-      pointer-events: none; /* Prevent image drag from interfering with card click */
+      margin-bottom: 15px; 
+      pointer-events: none; 
+    }
+    
+    .project-card .project-info { 
+        text-align: center;
+        width: 100%; 
     }
 
     .project-card h3 {
-      font-size: 18px; 
-      margin-bottom: 10px;
+      font-size: 20px; 
+      margin-bottom: 12px; 
       font-weight: 500;
       color: #fffffe; 
       pointer-events: none;
@@ -311,24 +339,20 @@
       display: inline-block; 
       border: none; 
       cursor: pointer;
-      pointer-events: none; /* Button click handled by card; this prevents double action if not needed */
+      pointer-events: none; 
+      font-size: 15px; 
     }
-    /* If project button needs to be clickable independently, remove pointer-events: none and adjust JS */
-    /* .project-button:hover {
-      background-color: #6a43d1; 
-      transform: translateY(-2px) scale(1.05); 
-    } */
 
 
     /* Responsive adjustments for Projects */
     @media (max-width: 992px) { 
         .project-card {
-            width: 230px;
-            height: 330px;
+            width: 280px; 
+            height: 340px;
         }
         .project-card img {
-            width: 150px;
-            height: 150px;
+            width: 190px; 
+            height: 190px;
         }
     }
     
@@ -337,43 +361,42 @@
         height: 380px; 
       }
       .project-card {
-        width: 200px; 
-        height: 310px;
-        padding: 15px;
+        width: 240px; 
+        height: 300px;
+        padding: 20px;
       }
       .project-card img {
-        width: 120px;
-        height: 120px;
+        width: 160px; 
+        height: 160px;
       }
       .project-card h3 {
-        font-size: 16px;
+        font-size: 18px;
       }
       .project-button {
-        padding: 8px 18px;
-        font-size: 14px;
+        padding: 8px 20px;
+        font-size: 14px; 
       }
     }
 
     @media (max-width: 480px) {
         .projects-carousel-container {
             height: 360px; 
-            width: 95%; 
         }
         .project-card {
-            width: 170px; 
-            height: 290px; 
-            padding: 12px;
+            width: 200px; 
+            height: 270px; 
+            padding: 15px;
         }
         .project-card img {
-            width: 100px;
-            height: 100px;
+            width: 130px; 
+            height: 130px;
         }
         .project-card h3 {
-            font-size: 15px;
+            font-size: 16px;
         }
         .project-button {
-            padding: 7px 15px;
-            font-size: 13px;
+            padding: 7px 18px;
+            font-size: 13px; 
         }
     }
 
@@ -385,13 +408,13 @@
       width: 100%;
       height: 100%;
       background: rgba(0, 0, 0, 0.85);
-      display: flex; /* Controlled by JS, initially none */
+      display: flex; 
       align-items: center;
       justify-content: center;
-      z-index: 10000; /* Ensure it's on top of everything */
+      z-index: 10000; 
       opacity: 0;
       transition: opacity 0.3s ease-in-out;
-      direction: ltr; /* Modal content layout LTR */
+      direction: ltr; 
     }
     .project-modal-overlay.active-overlay {
         opacity: 1;
@@ -405,7 +428,7 @@
       width: 85vw;
       max-width: 1100px;
       height: 80vh;
-      max-height: 700px; /* Max height for very tall screens */
+      max-height: 700px; 
       transform: scale(0.7) translateY(30px);
       opacity: 0;
       transition: transform 0.4s cubic-bezier(0.18, 0.89, 0.32, 1.28), opacity 0.3s ease-out;
@@ -424,21 +447,21 @@
 
     .project-modal-close-button {
       position: absolute;
-      top: 10px; /* Adjusted for better placement */
-      right: 10px; /* Adjusted for better placement */
+      top: 10px; 
+      right: 10px; 
       background: transparent;
       border: none;
       color: #a6a8b8;
       font-size: 30px;
       cursor: pointer;
-      padding: 8px; /* Slightly larger tap target */
+      padding: 8px; 
       line-height: 1;
       transition: color 0.2s ease, transform 0.2s ease;
       z-index: 10;
     }
     .project-modal-close-button:hover {
       color: #ffffff;
-      transform: rotate(90deg) scale(1.1); /* Added scale on hover */
+      transform: rotate(90deg) scale(1.1); 
     }
 
     .project-modal-image {
@@ -450,18 +473,18 @@
       margin-bottom: 15px;
       transform: scale(1);
       transition: width 0.4s ease-in-out 0.1s, height 0.4s ease-in-out 0.1s, 
-                  position 0s linear 0.1s, /* Delay position switch */
+                  position 0s linear 0.1s, 
                   top 0.4s ease-in-out 0.1s, right 0.4s ease-in-out 0.1s, 
                   margin 0.4s ease-in-out 0.1s, transform 0.4s ease-in-out 0.1s;
       z-index: 5;
-      position: relative; /* Initially relative */
+      position: relative; 
     }
 
     .project-modal-title {
       color: #fffffe;
       font-size: 24px;
       font-weight: 500;
-      margin-bottom: 30px;
+      margin-bottom: 20px; 
       text-align: center;
       transform: scale(1);
       transition: font-size 0.4s ease-in-out 0.1s, position 0s linear 0.1s,
@@ -469,12 +492,12 @@
                   text-align 0.4s ease-in-out 0.1s, width 0.4s ease-in-out 0.1s,
                   margin 0.4s ease-in-out 0.1s, transform 0.4s ease-in-out 0.1s;
       z-index: 5;
-      position: relative; /* Initially relative */
-      width: auto; /* Initial width */
+      position: relative; 
+      width: auto; 
     }
 
     .project-modal-preview {
-      width: 95%; /* Initial width, centered by flex on parent */
+      width: 95%; 
       height: 0; 
       background-color: #f0f0f0;
       border-radius: 8px;
@@ -484,15 +507,51 @@
                   opacity 0.3s ease-in-out 0.3s, transform 0.3s ease-in-out 0.3s,
                   margin-top 0.4s ease-in-out 0.3s;
       overflow: hidden;
-      flex-grow: 0; /* Don't grow initially */
+      flex-grow: 0; 
     }
 
     .project-modal-preview iframe {
       width: 100%;
       height: 100%;
       border: none;
-      background-color: #f0f0f0; /* Ensure iframe bg matches if content is transparent */
+      background-color: #f0f0f0; 
     }
+    
+    .project-modal-go-to-site-button {
+      display: inline-block;
+      background-color: #7f5af0; 
+      color: #fffffe;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 500;
+      margin-top: 15px; 
+      opacity: 0; 
+      transform: translateY(10px);
+      transition: opacity 0.3s ease-in-out 0.5s, transform 0.3s ease-in-out 0.5s, background-color 0.3s ease;
+      text-align: center;
+      font-family: "Tajawal", sans-serif; 
+    }
+
+    .project-modal-content.active .project-modal-go-to-site-button {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .project-modal-go-to-site-button:hover {
+      background-color: #6a43d1; 
+      transform: translateY(-2px) scale(1.02); 
+    }
+    
+    .project-modal-content.active .project-modal-go-to-site-button:hover {
+        transform: translateY(-2px) scale(1.02); 
+    }
+
+
+    .project-modal-go-to-site-button i {
+      margin-right: 8px; 
+    }
+
 
     /* --- States when modal content is active and settled --- */
     .project-modal-content.active .project-modal-image {
@@ -507,30 +566,33 @@
     .project-modal-content.active .project-modal-title {
       position: absolute;
       top: 35px; 
-      right: 125px; /* Next to image */
-      left: 25px; /* Give it a left boundary too */
-      width: auto; /* Let it size naturally, or calc(100% - 125px - 25px - 20px); for specific width */
-      max-width: calc(100% - 125px - 25px - 10px); /* Ensure it doesn't overflow */
+      right: 125px; 
+      left: 25px; 
+      width: auto; 
+      max-width: calc(100% - 125px - 25px - 10px); 
       font-size: 18px; 
       text-align: right;
       margin: 0;
+      margin-bottom: 0; 
     }
 
     .project-modal-content.active .project-modal-preview {
-      width: calc(100% - 50px); /* Account for modal padding */
-      /* height: calc(100% - 50px - 70px);  Replaced by flex-grow */
-      margin-top: 120px; /* Space for image and title area */
+      width: calc(100% - 50px); 
+      margin-top: 120px; 
       opacity: 1;
       transform: translateY(0) scale(1);
-      flex-grow: 1; /* Allow it to take remaining space */
+      flex-grow: 1; 
     }
+    
+    .project-modal-content.active {
+    }
+
 
   </style>
 </head>
 
 <body>
-  <div class="container"> <button class="button" onclick="playAudioInitial()">اضغط هنا</button>
-    </div>
+  <div class="container"> <button class="button" onclick="playSong()">اضغط هنا</button> </div>
   <audio id="myAudio" src="assets/audio/gl.mp3" style="display: none"></audio>
 
   <header>
@@ -571,25 +633,26 @@
     </div>
     <ul>
       <li>
-        <a target="_blank" href="https://twitch.tv/v5bzh"><i class="fa-brands fa-twitch"></i></a>
+        <a target="_blank" href="https://twitch.tv/v5bzh" aria-label="Twitch"><i class="fab fa-twitch"></i></a>
       </li>
       <li>
-        <a target="_blank" href="https://discord.gg/rivalmc"><i class="fa-brands fa-discord"></i></a>
+        <a target="_blank" href="https://discord.gg/rivalmc" aria-label="Discord"><i class="fab fa-discord"></i></a>
       </li>
       <li>
-        <a target="_blank" href="https://instagram.com/not_5bz/"><i class="fa-brands fa-instagram"></i></a>
+        <a target="_blank" href="https://instagram.com/not_5bz/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
       </li>
       <li>
-        <a target="_blank" href="https://ehsan.sa/"><i class="fas fa-heart"></i></a>
+        <a target="_blank" href="https://ehsan.sa/" aria-label="Ehsan Platform"><i class="fas fa-hand-holding-heart"></i></a>
       </li>
       <li>
-        <a target="_blank" href="https://github.com/TikTokv5bzh"><i class="fa-brands fa-github"></i></a>
+        <a target="_blank" href="https://github.com/TikTokv5bzh" aria-label="GitHub"><i class="fab fa-github"></i></a>
       </li>
       <li>
-        <a target="_blank" href="https://discord.gg/dAtXB6F5T4"><i class="fa-brands fa-discord"></i></a>
+        <a target="_blank" href="https://discord.gg/dAtXB6F5T4" aria-label="Discord"><i class="fab fa-discord"></i></a> 
       </li>
       <li>
-        <a target="_blank" href="https://kick.com/v5bzh"><i class="fa-brands fa-kickstarter"></i></a> </li>
+        <a target="_blank" href="https://kick.com/v5bzh" aria-label="Kick"><i class="fab fa-kickstarter-k"></i></a> 
+      </li>
     </ul>
   </section>
 
@@ -597,29 +660,33 @@
     <h2>مشاريعي</h2>
     <div class="projects-carousel-container">
       <div class="projects-carousel">
-        <div class="project-card" data-project-url="https://example.com/project-one">
-          <img src="https://placehold.co/180x180/7F5AF0/FFFFFF?text=مشروع+1" alt="صورة مشروع 1">
-          <h3>اسم المشروع الأول</h3>
-          <a href="https://example.com/project-one" class="project-button" target="_blank">زيارة الموقع</a>
+        <div class="project-card" data-project-url="https://tiktokv5bzh.github.io/qs/">
+          <img src="assets/imgs/لعبة-حروف.png" alt="صورة مشروع لعبة حروف" onerror="this.onerror=null;this.src='https://placehold.co/220x220/222533/FFFFFF?text=لعبة+حروف';">
+          <div class="project-info">
+            <h3>لعبة حروف</h3>
+            <a href="https://tiktokv5bzh.github.io/qs/" class="project-button" target="_blank">معاينة المشروع</a>
+          </div>
         </div>
-        <div class="project-card" data-project-url="https://example.com/project-two">
-          <img src="https://placehold.co/180x180/6A43D1/FFFFFF?text=مشروع+2" alt="صورة مشروع 2">
-          <h3>اسم المشروع الثاني</h3>
-          <a href="https://example.com/project-two" class="project-button" target="_blank">زيارة الموقع</a>
+        <div class="project-card" data-project-url="https://tiktokv5bzh.github.io/wordle/">
+          <img src="assets/imgs/wordle.jpg" alt="صورة مشروع لعبة ابحث على الكلمة (wordle)" onerror="this.onerror=null;this.src='https://placehold.co/220x220/222533/FFFFFF?text=Wordle';">
+          <div class="project-info">
+            <h3>لعبة ابحث على الكلمة (wordle)</h3>
+            <a href="https://tiktokv5bzh.github.io/wordle/" class="project-button" target="_blank">معاينة المشروع</a>
+          </div>
         </div>
-        <div class="project-card" data-project-url="https://example.com/project-three">
-          <img src="https://placehold.co/180x180/502AA1/FFFFFF?text=مشروع+3" alt="صورة مشروع 3">
-          <h3>اسم المشروع الثالث</h3>
-          <a href="https://example.com/project-three" class="project-button" target="_blank">زيارة الموقع</a>
+        <div class="project-card" data-project-url="https://example.com/project-three"> 
+          <img src="assets/imgs/برا-السالفة.png" alt="صورة مشروع لعبة من برا السالفة" onerror="this.onerror=null;this.src='https://placehold.co/220x220/222533/FFFFFF?text=من+برا+السالفة';">
+          <div class="project-info">
+            <h3>لعبة من برا السالفة</h3>
+            <a href="https://example.com/project-three" class="project-button" target="_blank">معاينة المشروع</a>
+          </div>
         </div>
-        <div class="project-card" data-project-url="https://example.com/project-four">
-          <img src="https://placehold.co/180x180/3C1F7B/FFFFFF?text=مشروع+4" alt="صورة مشروع 4">
-          <h3>اسم المشروع الرابع</h3>
-          <a href="https://example.com/project-four" class="project-button" target="_blank">زيارة الموقع</a>
-        </div>
-         <div class="project-card" data-project-url="#"> <img src="https://placehold.co/180x180/2A0F5B/FFFFFF?text=مشروع+5" alt="صورة مشروع 5">
-          <h3>مشروع بدون رابط</h3>
-          <a href="#" class="project-button" target="_blank">التفاصيل</a>
+        <div class="project-card" data-project-url="https://example.com/project-four"> 
+          <img src="assets/imgs/المشروع-الرابع.png" alt="صورة المشروع الرابع" onerror="this.onerror=null;this.src='https://placehold.co/220x220/222533/FFFFFF?text=المشروع+الرابع';">
+          <div class="project-info">
+            <h3>المشروع الرابع</h3>
+            <a href="https://example.com/project-four" class="project-button" target="_blank">معاينة المشروع</a>
+          </div>
         </div>
       </div>
     </div>
@@ -632,7 +699,8 @@
       <h3 class="project-modal-title"></h3>
       <div class="project-modal-preview">
         <iframe src="about:blank" title="Project Preview" sandbox="allow-scripts allow-same-origin allow-popups allow-forms"></iframe>
-        </div>
+      </div>
+      <a href="#" id="modalGoToSiteButton" class="project-modal-go-to-site-button" target="_blank" rel="noopener noreferrer">الانتقال إلى الموقع <i class="fas fa-external-link-alt"></i></a>
     </div>
   </div>
 
@@ -640,42 +708,28 @@
   <script>
     // --- Shared Variables ---
     let projectsCarouselAnimationFrameId;
-    const originalProjectsSpeed = 0.5; // Speed for project carousel
+    const originalProjectsSpeed = 0.5; 
     let currentProjectsSpeed = originalProjectsSpeed;
 
-    // --- Renamed initial audio play function to avoid conflict ---
-    function playAudioInitial() {
+    function playSong() {
       const audio = document.getElementById("myAudio");
-      const initialContainer = document.querySelector(".container"); // The initial overlay
+      const initialContainer = document.querySelector(".container"); 
       if (audio && initialContainer) {
         audio.play().catch(error => console.error("Error playing audio:", error));
         audio.volume = 0.3;
-        // Loop the audio
         audio.addEventListener("ended", function () {
-          this.currentTime = 0; // Reset time
+          this.currentTime = 0; 
           this.play().catch(error => console.error("Error re-playing audio:", error));
         });
-        initialContainer.style.display = "none"; // Hide the initial overlay
+        initialContainer.style.display = "none"; 
       } else {
           if(!audio) console.error("Audio element #myAudio not found");
           if(!initialContainer) console.error("Initial audio container .container not found");
       }
     }
-    // Note: The original HTML had onclick="playSong()". I've renamed the function to playAudioInitial()
-    // and will call it if the button exists. The HTML for the button should be:
-    // <button class="button" id="initialAudioButton">اضغط هنا</button>
-    // And then add event listener: document.getElementById('initialAudioButton').addEventListener('click', playAudioInitial);
-    // For now, I'll keep the onclick attribute if the user prefers it.
-    // The provided HTML has onclick="playSong()", so I'll use that name.
-    function playSong() { // Matching the onclick in HTML
-        playAudioInitial();
-    }
 
-
-    // --- DOMContentLoaded: Main script execution ---
     document.addEventListener('DOMContentLoaded', () => {
       
-      // 1. Siema Carousel Logic (for quotes)
       try {
         const siemaElement = document.querySelector('.siema');
         if (siemaElement && typeof Siema !== 'undefined' && siemaElement.children.length > 0) {
@@ -699,7 +753,6 @@
             if (document.querySelector('.carousel-nav')) {
                 document.querySelector('.carousel-nav').style.display = 'none';
             }
-            // console.warn("Siema element not found or Siema library not loaded. Quotes carousel will not be initialized.");
         }
       } catch (e) {
           console.error("Error initializing Siema:", e);
@@ -708,26 +761,29 @@
           }
       }
 
-      // 2. Projects Carousel Logic (horizontal scroll animation)
       const projectsCarousel = document.querySelector('.projects-carousel');
       const projectsCarouselContainer = document.querySelector('.projects-carousel-container');
-      const allProjectCardsForCarousel = projectsCarousel ? Array.from(projectsCarousel.querySelectorAll('.project-card')) : [];
+      let allProjectCardsForCarousel = projectsCarousel ? Array.from(projectsCarousel.querySelectorAll('.project-card')) : [];
       let projectCardWidth = 0;
-      const projectCardGap = 20; // Gap between cards in pixels
+      const projectCardGap = 20; // This should match the margin-right on .project-card if that CSS is re-added
+                                  // For absolute positioning, this gap is added to 'left' calculations.
 
       function animateMovingProjectCards() {
-        if (!projectsCarousel || currentProjectsSpeed === 0) { // If paused or no carousel
-          if(projectsCarousel) projectsCarouselAnimationFrameId = requestAnimationFrame(animateMovingProjectCards); // Keep checking if speed changes
+        if (!projectsCarousel || currentProjectsSpeed === 0 || allProjectCardsForCarousel.length === 0) { 
+          if(projectsCarousel) projectsCarouselAnimationFrameId = requestAnimationFrame(animateMovingProjectCards); 
           return;
         }
+        
+        const totalLengthOfOneCycle = allProjectCardsForCarousel.length * (projectCardWidth + projectCardGap);
+
         allProjectCardsForCarousel.forEach(card => {
           let currentLeft = parseFloat(card.style.left) || 0;
           currentLeft -= currentProjectsSpeed;
           
-          const totalWidthOfAllCardsInRepeatingSet = allProjectCardsForCarousel.length * (projectCardWidth + projectCardGap);
-          
-          if (currentLeft + projectCardWidth < 0) { // If card is completely off-screen to the left
-            currentLeft += totalWidthOfAllCardsInRepeatingSet; // Move it to the end of the line
+          // Condition for repositioning: when the card is completely off-screen to the left
+          if (currentLeft + projectCardWidth <= 0 && totalLengthOfOneCycle > 0) { 
+            // Move it to the end of the line by adding the total length of all cards in one cycle
+            currentLeft += totalLengthOfOneCycle; 
           }
           card.style.left = currentLeft + 'px';
         });
@@ -735,133 +791,164 @@
       }
 
       function initializeProjectsCarouselLayout() {
-        if (allProjectCardsForCarousel.length === 0 || !projectsCarousel || !projectsCarouselContainer) return;
+        allProjectCardsForCarousel = projectsCarousel ? Array.from(projectsCarousel.querySelectorAll('.project-card')) : [];
+        if (allProjectCardsForCarousel.length === 0 || !projectsCarousel || !projectsCarouselContainer) {
+            if(projectsCarouselAnimationFrameId) cancelAnimationFrame(projectsCarouselAnimationFrameId);
+            return;
+        }
 
         if (projectsCarouselAnimationFrameId) {
           cancelAnimationFrame(projectsCarouselAnimationFrameId);
         }
         
-        projectCardWidth = allProjectCardsForCarousel[0].offsetWidth;
-        if (projectCardWidth === 0) {
-          // console.warn("Project card width is 0. Retrying initialization for projects carousel.");
-          setTimeout(initializeProjectsCarouselLayout, 100); // Retry if not rendered yet
-          return;
-        }
+        // Ensure cards are visible to get correct offsetWidth
+        allProjectCardsForCarousel.forEach(card => card.style.visibility = 'hidden'); 
+        requestAnimationFrame(() => { 
+            allProjectCardsForCarousel.forEach(card => card.style.visibility = ''); 
+            
+            if (allProjectCardsForCarousel.length === 0) return;
+            
+            projectCardWidth = allProjectCardsForCarousel[0].offsetWidth;
 
-        let initialLeftPosition = 0;
-        allProjectCardsForCarousel.forEach((card) => {
-          card.style.position = 'absolute'; // Ensure cards are absolutely positioned for left manipulation
-          card.style.left = initialLeftPosition + 'px';
-          initialLeftPosition += (projectCardWidth + projectCardGap);
+            if (projectCardWidth === 0) { // Fallback if offsetWidth is not available immediately
+              projectCardWidth = 320; // Use the CSS defined width as a fallback
+            }
+            if (projectCardWidth === 0) { // If still zero, retry
+                setTimeout(initializeProjectsCarouselLayout, 100); 
+                return;
+            }
+
+
+            let initialLeftPosition = 0;
+            allProjectCardsForCarousel.forEach((card) => {
+              card.style.position = 'absolute'; // Ensure absolute positioning
+              card.style.left = initialLeftPosition + 'px';
+              initialLeftPosition += (projectCardWidth + projectCardGap);
+            });
+            
+            projectsCarousel.style.height = projectsCarouselContainer.offsetHeight + 'px'; 
+            currentProjectsSpeed = originalProjectsSpeed; 
+            animateMovingProjectCards();
         });
-        
-        projectsCarousel.style.height = projectsCarouselContainer.offsetHeight + 'px'; // Match container height
-        currentProjectsSpeed = originalProjectsSpeed; // Ensure it's running
-        animateMovingProjectCards();
       }
-
-      if (projectsCarousel && projectsCarouselContainer && allProjectCardsForCarousel.length > 0) {
-        initializeProjectsCarouselLayout();
+      
+      if (projectsCarousel && projectsCarouselContainer) { 
+        initializeProjectsCarouselLayout(); 
 
         projectsCarouselContainer.addEventListener('mouseenter', () => {
-          // Slow down only if not paused by modal (i.e., speed is not already 0)
-          if (currentProjectsSpeed !== 0) currentProjectsSpeed = 0.1; 
+          if (currentProjectsSpeed !== 0 && projectsCarouselAnimationFrameId) currentProjectsSpeed = 0.1; 
         });
         projectsCarouselContainer.addEventListener('mouseleave', () => {
-          // Resume original speed only if not paused by modal
-          if (currentProjectsSpeed !== 0) currentProjectsSpeed = originalProjectsSpeed;
+          if (currentProjectsSpeed !== 0 && projectsCarouselAnimationFrameId) currentProjectsSpeed = originalProjectsSpeed;
         });
 
         let resizeTimeoutProjects;
         window.addEventListener('resize', () => {
           clearTimeout(resizeTimeoutProjects);
           resizeTimeoutProjects = setTimeout(() => {
-            if (allProjectCardsForCarousel.length > 0) {
-              initializeProjectsCarouselLayout(); 
-            }
+            // Re-initialize layout on resize to adjust card positions and container dimensions
+            initializeProjectsCarouselLayout(); 
           }, 250);
         });
-      } else {
-        // console.warn("Projects carousel elements not found. Animation will not start.");
       }
 
-      // 3. Modal Interaction Logic
+
       const modalOverlay = document.getElementById('projectModal');
       const modalContent = modalOverlay.querySelector('.project-modal-content');
       const modalImage = modalOverlay.querySelector('.project-modal-image');
       const modalTitle = modalOverlay.querySelector('.project-modal-title');
       const modalPreviewFrame = modalOverlay.querySelector('.project-modal-preview iframe');
       const closeButton = modalOverlay.querySelector('.project-modal-close-button');
+      const goToSiteButton = document.getElementById('modalGoToSiteButton'); 
+      
+      // Re-query clickable cards as they are static in this version
       const clickableProjectCards = document.querySelectorAll('.projects-carousel .project-card');
 
       clickableProjectCards.forEach(card => {
         card.addEventListener('click', () => {
-          const imgSrc = card.querySelector('img').src;
+          const cardImageElement = card.querySelector('img');
+          const originalCardImgSrc = cardImageElement ? cardImageElement.getAttribute('src') : 'https://placehold.co/180x180/222533/FFFFFF?text=Image+Error';
+          
           const titleText = card.querySelector('h3').textContent;
-          // Use data-project-url attribute for the iframe source
           let projectUrl = card.dataset.projectUrl || card.querySelector('.project-button').href;
 
-          if (!projectUrl || projectUrl === '#' || projectUrl === window.location.href + "#") { // Check if URL is just a hash or empty
-             projectUrl = `https://placehold.co/800x600/f0f0f0/333333?text=${encodeURIComponent(titleText)}%0A(Preview+Not+Available)`;
+          let modalProjectUrl = projectUrl;
+          if (!projectUrl || projectUrl === '#' || projectUrl.endsWith('#') || projectUrl === window.location.href + "#" || projectUrl.startsWith("https://placehold.co")) { 
+             modalProjectUrl = `https://placehold.co/800x600/2a2d3e/FFFFFF?text=${encodeURIComponent(titleText)}%0A(Preview Not Available)`;
           }
           
-          modalImage.src = imgSrc;
+          modalImage.src = originalCardImgSrc; 
           modalImage.alt = titleText; 
           modalTitle.textContent = titleText;
-          modalPreviewFrame.src = projectUrl; // Load project or placeholder
+          modalPreviewFrame.src = 'about:blank'; 
+          
+          goToSiteButton.href = projectUrl; 
+          if (!projectUrl || projectUrl === '#' || projectUrl.endsWith('#') || projectUrl.startsWith("https://placehold.co")) {
+            goToSiteButton.style.display = 'none';
+          } else {
+            goToSiteButton.style.display = 'inline-block';
+          }
+
+
+          setTimeout(() => {
+            modalPreviewFrame.src = modalProjectUrl; 
+          }, 50);
 
           modalOverlay.style.display = 'flex';
-          document.body.classList.add('modal-open'); // Prevent background scroll
+          document.body.classList.add('modal-open'); 
 
-          requestAnimationFrame(() => { // Ensure display:flex is applied
-            modalOverlay.classList.add('active-overlay'); // Fade in overlay
-            modalContent.classList.add('active'); // Trigger modal content animation
+          requestAnimationFrame(() => { 
+            modalOverlay.classList.add('active-overlay'); 
+            modalContent.classList.add('active'); 
           });
           
-          // Pause projects carousel
           if (projectsCarouselAnimationFrameId) {
               cancelAnimationFrame(projectsCarouselAnimationFrameId);
-              projectsCarouselAnimationFrameId = null; // Clear the ID to indicate it's paused by modal
+              // Clear the ID to indicate it's paused by modal for the closeModal logic
+              projectsCarouselAnimationFrameId = null; 
           }
         });
       });
 
       function closeModal() {
-        modalContent.classList.remove('active'); // Trigger closing animation for content
-        modalOverlay.classList.remove('active-overlay'); // Trigger fade out for overlay
-        document.body.classList.remove('modal-open'); // Restore background scroll
+        modalContent.classList.remove('active'); 
+        modalOverlay.classList.remove('active-overlay'); 
+        document.body.classList.remove('modal-open'); 
 
-        // Listen for transition end on the overlay for hiding it
-        const onOverlayTransitionEnd = () => {
-          modalOverlay.style.display = 'none';
-          modalPreviewFrame.src = 'about:blank'; // Clear iframe content
-          modalOverlay.removeEventListener('transitionend', onOverlayTransitionEnd);
+        const onOverlayTransitionEnd = (e) => {
+          if (e.target === modalOverlay && e.propertyName === 'opacity') {
+            modalOverlay.style.display = 'none';
+            modalPreviewFrame.src = 'about:blank'; 
+            goToSiteButton.href = '#'; 
+            goToSiteButton.style.display = 'inline-block'; 
+            modalOverlay.removeEventListener('transitionend', onOverlayTransitionEnd);
 
-          // Resume projects carousel only if it was initialized and paused by modal
-          if (projectsCarousel && allProjectCardsForCarousel.length > 0 && !projectsCarouselAnimationFrameId) {
-              currentProjectsSpeed = originalProjectsSpeed; // Reset speed
-              animateMovingProjectCards(); // Restart animation
+            // Resume carousel animation if it was paused by modal
+            if (projectsCarousel && allProjectCardsForCarousel.length > 0 && !projectsCarouselAnimationFrameId ) { 
+                currentProjectsSpeed = originalProjectsSpeed; 
+                animateMovingProjectCards(); // Restart animation
+            }
           }
         };
         modalOverlay.addEventListener('transitionend', onOverlayTransitionEnd);
 
-        // Fallback if transitionend doesn't fire (e.g., if display was already none or no transition)
-        setTimeout(() => {
-            if (modalOverlay.style.display !== 'none') { // If still visible after timeout
+        setTimeout(() => { 
+            if (modalOverlay.style.display !== 'none') { 
                 modalOverlay.style.display = 'none';
                 modalPreviewFrame.src = 'about:blank';
+                goToSiteButton.href = '#'; 
+                goToSiteButton.style.display = 'inline-block'; 
                 if (projectsCarousel && allProjectCardsForCarousel.length > 0 && !projectsCarouselAnimationFrameId) {
                     currentProjectsSpeed = originalProjectsSpeed;
                     animateMovingProjectCards();
                 }
             }
-        }, 400); // Duration should be slightly longer than CSS opacity transition
+        }, 400); 
       }
 
       if(closeButton) closeButton.addEventListener('click', closeModal);
       if(modalOverlay) {
           modalOverlay.addEventListener('click', (event) => {
-              // Close only if the click is on the overlay itself, not its children
               if (event.target === modalOverlay) {
                   closeModal();
               }
@@ -873,7 +960,7 @@
           }
       });
 
-    }); // End of DOMContentLoaded
+    }); 
   </script>
 </body>
 </html>
